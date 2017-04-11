@@ -11,22 +11,22 @@ package entities;
  */
 public class Stock {
     
-    private int stock_id;
-    private int stock_total;
-
-    public int getStock_id() {
-        return stock_id;
+    private int _1_stock_id;
+    private int _2_stock_total;
+    
+    public int get1_stock_id() {
+        return _1_stock_id;
     }
 
-    public void setStock_id(int stock_id) {
-        this.stock_id = stock_id;
+    public void set1_stock_id(int _1_stock_id) {
+        this._1_stock_id = _1_stock_id;
     }
 
-    public int getStock_total() {
-        return stock_total;
+    public int get2_stock_total() {
+        return _2_stock_total;
     }
 
-    public void setStock_total(int stock_total) {
-        this.stock_total = stock_total;
+    public void set2_stock_total(int _2_stock_total) {
+        this._2_stock_total = _2_stock_total;
     }
 }

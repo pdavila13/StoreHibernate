@@ -11,22 +11,22 @@ package entities;
  */
 public class Category {
     
-    private int category_id;
-    private String category_name;
-
-    public int getCategory_id() {
-        return category_id;
+    private int _1_category_id;
+    private String _2_category_name;
+    
+    public int get1_category_id() {
+        return _1_category_id;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void set1_category_id(int _1_category_id) {
+        this._1_category_id = _1_category_id;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String get2_category_name() {
+        return _2_category_name;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void set2_category_name(String _2_category_name) {
+        this._2_category_name = _2_category_name;
     }
 }
