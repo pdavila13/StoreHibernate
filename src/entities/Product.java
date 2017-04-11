@@ -7,21 +7,49 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
  * @author pdavila
  */
+@Entity
+@Table(name="products")  
 public class Product {
     
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="product_id")
     private int _1_product_id;
-    private String _2_product_name;
-    private String _3_product_trademark;
-    private String _4_product_model;
-    private double _5_prodcut_price;
     
+    @Column(name="product_name")
+    private String _2_product_name;
+    
+    @Column(name="product_trademark")
+    private String _3_product_trademark;
+    
+    @Column(name="product_model")
+    private String _4_product_model;
+    
+    @Column(name="product_price")
+    private double _5_product_price;
+    
+    @Transient
+    @Column(name="product_stored_stock")
     private Stock _6_stored;
+    
+    @Transient
+    @Column(name="product_belongs_category")
     private List<Category> _7_belongs = new ArrayList<>();
+    
+    @Transient
+    @Column(name="product_sold_client")
     private ArrayList<Client> _8_sold =  new ArrayList<>();
 
     public Product() {
@@ -32,7 +60,7 @@ public class Product {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;
-        this._5_prodcut_price = _5_prodcut_price;
+        this._5_product_price = _5_product_price;
     }
 
     public int get1_product_id() {
@@ -67,12 +95,12 @@ public class Product {
         this._4_product_model = _4_product_model;
     }
 
-    public double get5_prodcut_price() {
-        return _5_prodcut_price;
+    public double get5_product_price() {
+        return _5_product_price;
     }
 
-    public void set5_prodcut_price(double _5_prodcut_price) {
-        this._5_prodcut_price = _5_prodcut_price;
+    public void set5_product_price(double _5_prodcut_price) {
+        this._5_product_price = _5_prodcut_price;
     }
 
     public Stock get6_stored() {
