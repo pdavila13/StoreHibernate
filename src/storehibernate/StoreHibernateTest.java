@@ -6,6 +6,7 @@
 package storehibernate;
 
 import entities.Product;
+import entities.Stock;
 import java.util.List;
 import model.ClassDAO;
 
@@ -21,19 +22,27 @@ public class StoreHibernateTest {
     public static void main(String[] args) {
         
         ClassDAO ClassProductDAO = new ClassDAO(Product.class);
+        
         Product productRecovered = null;
+     
         long destroy_product_id = 0;
         
         //Created
-        Product p1 = new Product("Processador","INTEL","7500",153);
-        Product p2 = new Product("Motherboard","ASUS","970",197);
-        Product p3 = new Product("Hard disk","WD","ST96304826",76);
+        Stock s1 = null;
+        Stock s2 = null;
+        Stock s3 = null;
+        
+        //Created
+        Product p1 = new Product("Processador","INTEL","7500",153,s1);
+        Product p2 = new Product("Motherboard","ASUS","970",197,s2);
+        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3);
         
         //Save
         destroy_product_id = ClassProductDAO.store(p1);
         ClassProductDAO.store(p2);
         ClassProductDAO.store(p3);
         
+
         //Edit and update
         p2.set3_product_trademark("MSI");
         ClassProductDAO.update(p2);
@@ -41,9 +50,9 @@ public class StoreHibernateTest {
         //Recovered
         productRecovered = (Product) ClassProductDAO.obtain(Integer.valueOf(String.valueOf(destroy_product_id)));
         System.out.println("Recuperem a " + productRecovered.get2_product_name());
-        
+
         //Delete
-        ClassProductDAO.destroy(productRecovered);
+        ClassProductDAO.destroy(productRecovered);    
         
         //Obstain list
         List<Product> listProducts = ClassProductDAO.obtainList();
