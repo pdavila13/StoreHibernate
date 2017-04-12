@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -40,8 +41,7 @@ public class Product {
     @Column(name="product_price")
     private double _5_product_price;
     
-    @Transient
-    @Column(name="product_stored_stock")
+    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
     private Stock _6_stored;
     
     @Transient
@@ -56,11 +56,12 @@ public class Product {
         //
     }
     
-    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;
         this._5_product_price = _5_product_price;
+        this._6_stored = _6_stored;
     }
 
     public int get1_product_id() {
