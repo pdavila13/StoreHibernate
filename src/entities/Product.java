@@ -56,7 +56,7 @@ public class Product {
         //
     }
     
-    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_prodcut_price) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;

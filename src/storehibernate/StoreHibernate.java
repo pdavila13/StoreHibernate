@@ -5,6 +5,11 @@
  */
 package storehibernate;
 
+import controller.Controller;
+import entities.Product;
+import model.ClassDAO;
+import views.View;
+
 /**
  *
  * @author pdavila
@@ -15,7 +20,10 @@ public class StoreHibernate {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ClassDAO<Product> modelProduct = new ClassDAO<>(Product.class);
+        View view = new View();
+        
+        new Controller(view,modelProduct); 
     }
     
 }
