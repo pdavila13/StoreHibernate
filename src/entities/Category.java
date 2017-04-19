@@ -5,14 +5,38 @@
  */
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author pdavila
  */
+@Entity
+@Table(name="categories")  
 public class Category {
     
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="category_id")
     private int _1_category_id;
+    
+    @Column(name="category_name")
     private String _2_category_name;
+
+    public Category() {
+        //
+    }
+
+    public Category(String _2_category_name) {
+        this._2_category_name = _2_category_name;
+    }
     
     public int get1_category_id() {
         return _1_category_id;
@@ -28,5 +52,10 @@ public class Category {
 
     public void set2_category_name(String _2_category_name) {
         this._2_category_name = _2_category_name;
+    }
+
+    @Override
+    public String toString() {
+        return _2_category_name;
     }
 }

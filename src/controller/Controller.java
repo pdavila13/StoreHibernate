@@ -5,6 +5,7 @@
  */
 package controller;
 
+import entities.Category;
 import entities.Product;
 import entities.Stock;
 import java.awt.event.ActionEvent;
@@ -20,8 +21,10 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -41,20 +44,25 @@ public class Controller {
     
     private ClassDAO<Product> modelProduct;
     private ClassDAO<Stock> modelStock;
+    private ClassDAO<Category> modelCategory;
     
     private TableColumn loadTableProduct;
     private TableColumn loadTableStock;
+    private TableColumn loadTableCategory;
     
     private int filasel = -1;
 
-    public Controller(View view, ClassDAO<Product> modelProduct, ClassDAO<Stock> modelStock) {
+    public Controller(View view, ClassDAO<Product> modelProduct, ClassDAO<Stock> modelStock, ClassDAO<Category> modelCategory) {
         this.view = view;
         this.modelProduct = modelProduct;
         this.modelStock = modelStock;
+        this.modelCategory = modelCategory;
         
         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getjTableProduct(), Product.class);
         loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getjTableStock(), Stock.class);
+        
         loadCombo((ArrayList)modelStock.obtainList(),view.getjComboBoxProductStock());
+        loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
         
         controlProduct();
         controlStock();
@@ -79,9 +87,11 @@ public class Controller {
                             view.getjTextFieldProductTraceMark().getText(),
                             view.getjTextFieldProductModel().getText(),
                             Integer.valueOf(view.getjTextFieldProductPrice().getText()),
-                            (Stock) view.getjComboBoxProductStock().getSelectedItem()
+                            (Stock) view.getjComboBoxProductStock().getSelectedItem(),
+                            (Category) view.getjComboBoxProductCategory.getSelectedItem()
                     );
                     modelProduct.store(p);
+                    
                     loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
@@ -108,6 +118,7 @@ public class Controller {
                     modifyProduct.set4_product_model(view.getjTextFieldProductModel().getText());
                     modifyProduct.set5_product_price(Integer.valueOf(view.getjTextFieldProductPrice().getText()));
                     modifyProduct.set6_stored((Stock) view.getjComboBoxProductStock().getSelectedItem());
+                    modifyProduct.set7_belongs((Category) view.getjComboBoxProductCategory().getSelectedItem());
                     
                     view.getjTableProduct().removeColumn(loadTableProduct);
                     modelProduct.update(modifyProduct);
@@ -152,6 +163,7 @@ public class Controller {
                     view.getjTextFieldProductModel().setText(model.getValueAt(view.getjTableProduct().getSelectedRow(), 3).toString());
                     view.getjTextFieldProductPrice().setText(model.getValueAt(Integer.valueOf(view.getjTableProduct().getSelectedRow()), 4).toString());
                     view.getjComboBoxProductStock().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 5).toString());
+                    view.getjComboBoxProductCategory().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 6).toString());
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
