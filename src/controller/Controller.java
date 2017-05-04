@@ -139,30 +139,34 @@ public class Controller {
         view.getCreateProductButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource().equals(view.getCreateProductButton())) {
-                    if(!view.getProductIdTextField().getText().trim().equals("") || 
-                       !view.getProductNameTextField().getText().trim().equals("") || 
-                       !view.getProductTraceMarkTextField().getText().trim().equals("") || 
-                       !view.getProductModelTextField().getText().trim().equals("") || 
-                       !view.getProductPriceTextField().getText().trim().equals(""))
-                    modelProduct.obtainList();
-                    
-                    Product p = new Product(
-                            view.getProductNameTextField().getText(),
-                            view.getProductTraceMarkTextField().getText(),
-                            view.getProductModelTextField().getText(),
-                            Integer.valueOf(view.getProductPriceTextField().getText()));
-                    modelProduct.store(p);
-                    loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
+                try {
+                    if(e.getSource().equals(view.getCreateProductButton())) {
+                        if(!view.getProductIdTextField().getText().trim().equals("") || 
+                           !view.getProductNameTextField().getText().trim().equals("") || 
+                           !view.getProductTraceMarkTextField().getText().trim().equals("") || 
+                           !view.getProductModelTextField().getText().trim().equals("") || 
+                           !view.getProductPriceTextField().getText().trim().equals(""))
+                        modelProduct.obtainList();
+
+                        Product p = new Product(
+                                view.getProductNameTextField().getText(),
+                                view.getProductTraceMarkTextField().getText(),
+                                view.getProductModelTextField().getText(),
+                                Integer.valueOf(view.getProductPriceTextField().getText()));
+                        modelProduct.store(p);
+                        loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    view.getProductIdTextField().setText("");
+                    view.getProductNameTextField().setText("");
+                    view.getProductTraceMarkTextField().setText("");
+                    view.getProductModelTextField().setText("");
+                    view.getProductPriceTextField().setText("");
+                } catch(NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
                 }
-                
-                view.getProductIdTextField().setText("");
-                view.getProductNameTextField().setText("");
-                view.getProductTraceMarkTextField().setText("");
-                view.getProductModelTextField().setText("");
-                view.getProductPriceTextField().setText("");
             }
         });
         
@@ -170,21 +174,31 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tcm = (TableColumnModel) view.getProductTable().getColumnModel();
-                if (view.getProductTable().getSelectedRow() != -1) {
-                    view.getProductTable().addColumn(loadTableProduct);
-                    DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
-                    Product modifyProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
-                    modifyProduct.set2_product_name(view.getProductNameTextField().getText());
-                    modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
-                    modifyProduct.set4_product_model(view.getProductModelTextField().getText());
-                    modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
+                try {
+                    if (view.getProductTable().getSelectedRow() != -1) {
+                        view.getProductTable().addColumn(loadTableProduct);
+                        DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
+                        Product modifyProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
+                        modifyProduct.set2_product_name(view.getProductNameTextField().getText());
+                        modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
+                        modifyProduct.set4_product_model(view.getProductModelTextField().getText());
+                        modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
+
+                        view.getProductTable().removeColumn(loadTableProduct);
+                        modelProduct.update(modifyProduct);
+                        view.getProductTable().addColumn(loadTableProduct);
+                        loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Selecciona un producto para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    }
                     
-                    view.getProductTable().removeColumn(loadTableProduct);
-                    modelProduct.update(modifyProduct);
-                    view.getProductTable().addColumn(loadTableProduct);
-                    loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona un producto para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    view.getProductIdTextField().setText("");
+                    view.getProductNameTextField().setText("");
+                    view.getProductTraceMarkTextField().setText("");
+                    view.getProductModelTextField().setText("");
+                    view.getProductPriceTextField().setText("");
+                } catch(NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -205,6 +219,12 @@ public class Controller {
                 } else {
                     JOptionPane.showMessageDialog(null, "Seleccciona un producto para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
+                
+                view.getProductIdTextField().setText("");
+                view.getProductNameTextField().setText("");
+                view.getProductTraceMarkTextField().setText("");
+                view.getProductModelTextField().setText("");
+                view.getProductPriceTextField().setText("");
             }
         });
         
