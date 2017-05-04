@@ -50,5 +50,6 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
     <mapping class="entities.Product"/>
+    <mapping class="entities.Stock"/>
   </session-factory>
 </hibernate-configuration>
