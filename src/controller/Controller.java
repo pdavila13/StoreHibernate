@@ -89,9 +89,9 @@ public class Controller {
                                 view.getjTextFieldProductModel().getText(),
                                 Double.valueOf(view.getjTextFieldProductPrice().getText()),
                                 (Stock) view.getjComboBoxProductStock().getSelectedItem(),
-                                (Category) view.getjComboBoxProductCategory.getSelectedItem()
+                                (List<Category>) (Category) view.getjComboBoxProductCategory.getSelectedItem()
                         );
-                         modelProduct.store(p);
+                        modelProduct.store(p);
                         loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
                     } catch(NumberFormatException ex) {
                         JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
@@ -123,13 +123,14 @@ public class Controller {
                         modifyProduct.set4_product_model(view.getjTextFieldProductModel().getText());
                         modifyProduct.set5_product_price(Double.valueOf(view.getjTextFieldProductPrice().getText()));
                         modifyProduct.set6_stored((Stock) view.getjComboBoxProductStock().getSelectedItem());
-                        modifyProduct.set7_belongs((Category) view.getjComboBoxProductCategory().getSelectedItem());
+                        //modifyProduct.set7_belongs((Category) view.getjComboBoxProductCategory().getSelectedItem());
 
                         view.getjTableProduct().removeColumn(loadTableProduct);
                         modelProduct.update(modifyProduct);
                         view.getjTableProduct().addColumn(loadTableProduct);
                         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
                         loadCombo((ArrayList)modelStock.obtainList(),view.getjComboBoxProductStock());
+                        loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
                     } catch(NumberFormatException ex) {
                         JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
                     }
@@ -414,7 +415,7 @@ public class Controller {
     
     //per carregar un JComboBox a partir d'un ArrayList que conté les dades
     private void loadCombo(ArrayList resultSet, JComboBox combo) {
-        combo.setModel(new DefaultComboBoxModel((resultSet!=null?resultSet.toArray():new Object[]{})));
+        combo.setModel(new DefaultComboBoxModel((resultSet != null ? resultSet.toArray() : new Object[]{})));
     }
     
     private static class OrdenarMetodeClasseAlfabeticament implements Comparator {

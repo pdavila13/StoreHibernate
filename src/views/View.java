@@ -22,6 +22,8 @@ import javax.swing.JTextField;
  */
 public class View extends javax.swing.JFrame {
 
+    public Category getjComboBoxProductCategory;
+
     /**
      * Creates new form View
      */
