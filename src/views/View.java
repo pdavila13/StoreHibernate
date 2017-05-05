@@ -86,7 +86,7 @@ public class View extends javax.swing.JFrame {
         jTextFieldCategoryName = new javax.swing.JTextField();
         jPanelCategoryButtons = new javax.swing.JPanel();
         jButtonCategoryCreate = new javax.swing.JButton();
-        jButtonCategorryModify = new javax.swing.JButton();
+        jButtonCategoryModify = new javax.swing.JButton();
         jButtonCategoryDelete = new javax.swing.JButton();
         jButtonCategoryClear = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
@@ -355,7 +355,7 @@ public class View extends javax.swing.JFrame {
 
         jButtonCategoryCreate.setText("Crear");
 
-        jButtonCategorryModify.setText("Modificar");
+        jButtonCategoryModify.setText("Modificar");
 
         jButtonCategoryDelete.setText("Eliminar");
 
@@ -370,7 +370,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButtonCategoryClear, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jButtonCategoryCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCategorryModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jButtonCategoryDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
@@ -380,7 +380,7 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButtonCategoryCreate)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonCategorryModify)
+                .addComponent(jButtonCategoryModify)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCategoryDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
@@ -572,7 +572,7 @@ public class View extends javax.swing.JFrame {
      * Category
      */
     public JButton getjButtonCategoryCreate() { return jButtonCategoryCreate; }
-    public JButton getjButtonCategorryModify() { return jButtonCategorryModify; }
+    public JButton getjButtonCategoryModify() { return jButtonCategoryModify; }
     public JButton getjButtonCategoryDelete() { return jButtonCategoryDelete; }
     public JButton getjButtonCategoryClear() { return jButtonCategoryClear; }
 
@@ -590,10 +590,10 @@ public class View extends javax.swing.JFrame {
     public JTextField getjTextFieldCategoryName() { return jTextFieldCategoryName; }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCategorryModify;
     private javax.swing.JButton jButtonCategoryClear;
     private javax.swing.JButton jButtonCategoryCreate;
     private javax.swing.JButton jButtonCategoryDelete;
+    private javax.swing.JButton jButtonCategoryModify;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonProductClear;
     private javax.swing.JButton jButtonProductCreate;

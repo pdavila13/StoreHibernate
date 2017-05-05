@@ -586,7 +586,7 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jButtonCategoryClear" pref="105" max="32767" attributes="0"/>
                               <Component id="jButtonCategoryCreate" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButtonCategorryModify" alignment="0" pref="105" max="32767" attributes="0"/>
+                              <Component id="jButtonCategoryModify" alignment="0" pref="105" max="32767" attributes="0"/>
                               <Component id="jButtonCategoryDelete" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="13" max="32767" attributes="0"/>
@@ -599,7 +599,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonCategoryCreate" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonCategorryModify" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonCategoryModify" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonCategoryDelete" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="78" max="32767" attributes="0"/>
@@ -615,7 +615,7 @@
                     <Property name="text" type="java.lang.String" value="Crear"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonCategorryModify">
+                <Component class="javax.swing.JButton" name="jButtonCategoryModify">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>

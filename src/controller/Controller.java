@@ -60,12 +60,14 @@ public class Controller {
         
         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getjTableProduct(), Product.class);
         loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getjTableStock(), Stock.class);
+        loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(), view.getjTableCategory(), Category.class);
         
         loadCombo((ArrayList)modelStock.obtainList(),view.getjComboBoxProductStock());
         loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
         
         controlProduct();
         controlStock();
+        controlCategory();
         
         exitButton();
     }
@@ -89,7 +91,7 @@ public class Controller {
                                 view.getjTextFieldProductModel().getText(),
                                 Double.valueOf(view.getjTextFieldProductPrice().getText()),
                                 (Stock) view.getjComboBoxProductStock().getSelectedItem(),
-                                (List<Category>) (Category) view.getjComboBoxProductCategory.getSelectedItem()
+                                (List<Category>) (Category) view.getjComboBoxProductCategory().getSelectedItem()
                         );
                         modelProduct.store(p);
                         loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
@@ -294,6 +296,99 @@ public class Controller {
         clearTextFieldStock();
     }
     
+    private void controlCategory() {
+        view.getjButtonCategoryCreate().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource().equals(view.getjButtonCategoryCreate())) {
+                    if(!view.getjTextFieldCategoryId().getText().trim().equals("") ||
+                       !view.getjTextFieldCategoryName().getText().trim().equals(""))
+                    modelCategory.obtainList();
+
+                    Category c = new Category(
+                            view.getjTextFieldCategoryName().getText()
+                    );
+                    modelCategory.store(c);
+
+                    loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                    loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No has introducido ninguna categoria", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        
+        view.getjButtonCategoryModify().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
+                if (view.getjTableCategory().getSelectedRow() != -1) {
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
+                    Category modifyCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
+                    modifyCategory.set2_category_name(view.getjTextFieldCategoryName().getText());
+
+                    view.getjTableCategory().removeColumn(loadTableCategory);
+                    modelCategory.update(modifyCategory);
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un categoria para modificarla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        
+        view.getjButtonCategoryDelete().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
+                if (view.getjTableCategory().getSelectedRow() != -1) {
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
+                    
+                    Category deleteCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
+                    view.getjTableCategory().removeColumn(loadTableCategory);
+                    modelCategory.destroy(deleteCategory);
+                    
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccciona una categoria para eliminarla", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        
+        view.getjTableCategory().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (view.getjTableCategory().getSelectedRow() != -1) {
+                    super.mouseClicked(e);
+                    DefaultTableModel model = (DefaultTableModel) view.getjTableCategory().getModel();
+                    view.getjTextFieldCategoryId().setText(model.getValueAt(Integer.valueOf(view.getjTableCategory().getSelectedRow()), 0).toString());
+                    view.getjTextFieldCategoryName().setText(model.getValueAt(view.getjTableCategory().getSelectedRow(), 1).toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona una categoria de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getjButtonCategoryClear().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getjTextFieldCategoryId().setText("");
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        
+        clearTextFieldCategory();
+    }
+    
     public void clearTextFieldProduct() {
         view.getjButtonProductClear().addMouseListener(new MouseAdapter() {
             @Override
@@ -313,6 +408,16 @@ public class Controller {
             public void mouseClicked(MouseEvent e) {
                 view.getjTextFieldStockId().setText("");
                 view.getjTextFieldStockTotal().setText("");
+            }
+        });
+    }
+    
+    public void clearTextFieldCategory() {
+        view.getjButtonCategoryClear().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getjTextFieldCategoryId().setText("");
+                view.getjTextFieldCategoryName().setText("");
             }
         });
     }
