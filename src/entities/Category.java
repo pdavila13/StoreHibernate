@@ -29,6 +29,10 @@ public class Category {
     
     @Column(name="category_name")
     private String _2_category_name;
+    
+    @ManyToOne(optional = true)
+    @JoinColumn(name="product_id", nullable=true)
+    private Product _3_product;
 
     public Category() {
         //
@@ -52,6 +56,14 @@ public class Category {
 
     public void set2_category_name(String _2_category_name) {
         this._2_category_name = _2_category_name;
+    }
+    
+    public Product get3_product() {
+        return _3_product;
+    }
+
+    public void set3_product(Product _3_product) {
+        this._3_product = _3_product;
     }
 
     @Override

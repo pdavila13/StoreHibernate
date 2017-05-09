@@ -91,7 +91,7 @@ public class Controller {
                                 view.getjTextFieldProductModel().getText(),
                                 Double.valueOf(view.getjTextFieldProductPrice().getText()),
                                 (Stock) view.getjComboBoxProductStock().getSelectedItem(),
-                                (List<Category>) (Category) view.getjComboBoxProductCategory().getSelectedItem()
+                                (Category) view.getjComboBoxProductCategory().getSelectedItem()
                         );
                         modelProduct.store(p);
                         loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
@@ -125,7 +125,7 @@ public class Controller {
                         modifyProduct.set4_product_model(view.getjTextFieldProductModel().getText());
                         modifyProduct.set5_product_price(Double.valueOf(view.getjTextFieldProductPrice().getText()));
                         modifyProduct.set6_stored((Stock) view.getjComboBoxProductStock().getSelectedItem());
-                        //modifyProduct.set7_belongs((Category) view.getjComboBoxProductCategory().getSelectedItem());
+                        modifyProduct.set7_category((Category) view.getjComboBoxProductCategory().getSelectedItem());
 
                         view.getjTableProduct().removeColumn(loadTableProduct);
                         modelProduct.update(modifyProduct);
