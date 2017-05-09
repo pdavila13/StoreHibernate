@@ -9,9 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -44,9 +48,9 @@ public class Product {
     @OneToOne(cascade=javax.persistence.CascadeType.ALL)
     private Stock _6_stored;
     
-    @Transient
-    @Column(name="product_belongs_category")
-    private List<Category> _7_belongs = new ArrayList<>();
+    @ManyToOne(optional = true)
+    @JoinColumn(name="category_id", nullable=true)
+    private Category _7_category;
     
     @Transient
     @Column(name="product_sold_client")
@@ -56,12 +60,13 @@ public class Product {
         //
     }
     
-    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored, Category _7_category) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;
         this._5_product_price = _5_product_price;
         this._6_stored = _6_stored;
+        this._7_category = _7_category;
     }
 
     public int get1_product_id() {
@@ -111,13 +116,13 @@ public class Product {
     public void set6_stored(Stock _6_stored) {
         this._6_stored = _6_stored;
     }
-
-    public List<Category> get7_belongs() {
-        return _7_belongs;
+    
+    public Category get7_category() {
+        return _7_category;
     }
 
-    public void set7_belongs(List<Category> _7_belongs) {
-        this._7_belongs = _7_belongs;
+    public void set7_category(Category _7_category) {
+        this._7_category = _7_category;
     }
 
     public ArrayList<Client> get8_sold() {
@@ -126,5 +131,10 @@ public class Product {
 
     public void set8_sold(ArrayList<Client> _8_sold) {
         this._8_sold = _8_sold;
+    }
+
+    @Override
+    public String toString() {
+        return _2_product_name;
     }
 }

@@ -51,5 +51,6 @@ Contributor(s):
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
     <mapping class="entities.Product"/>
     <mapping class="entities.Stock"/>
+    <mapping class="entities.Category"/>
   </session-factory>
 </hibernate-configuration>
