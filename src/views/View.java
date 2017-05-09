@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  */
 public class View extends javax.swing.JFrame {
 
-    public Category getjComboBoxProductCategory;
+    private Category getjComboBoxProductCategory;
 
     /**
      * Creates new form View
@@ -89,6 +89,26 @@ public class View extends javax.swing.JFrame {
         jButtonCategoryModify = new javax.swing.JButton();
         jButtonCategoryDelete = new javax.swing.JButton();
         jButtonCategoryClear = new javax.swing.JButton();
+        jPanelClient = new javax.swing.JPanel();
+        jScrollPanelClient = new javax.swing.JScrollPane();
+        jTableClient = new javax.swing.JTable();
+        jPanelClientButtons = new javax.swing.JPanel();
+        jButtonClientCreate = new javax.swing.JButton();
+        jButtonClientModify = new javax.swing.JButton();
+        jButtonClientDelete = new javax.swing.JButton();
+        jButtonClientClear = new javax.swing.JButton();
+        jLabelClientId = new javax.swing.JLabel();
+        jLabelClientOfficialId = new javax.swing.JLabel();
+        jLabelClientFullName = new javax.swing.JLabel();
+        jLabelClientEmail = new javax.swing.JLabel();
+        jLabelClientAddress = new javax.swing.JLabel();
+        jLabelClientTelephoneNumber = new javax.swing.JLabel();
+        jTextFieldClientId = new javax.swing.JTextField();
+        jTextFieldClientOfficialId = new javax.swing.JTextField();
+        jTextFieldClientFullName = new javax.swing.JTextField();
+        jTextFieldClientEmail = new javax.swing.JTextField();
+        jTextFieldClientAddress = new javax.swing.JTextField();
+        jTextFieldClientTelephoneNumber = new javax.swing.JTextField();
         jLabelTitle = new javax.swing.JLabel();
         jButtonExit = new javax.swing.JButton();
 
@@ -318,7 +338,7 @@ public class View extends javax.swing.JFrame {
         jPanelStockLayout.setVerticalGroup(
             jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStockLayout.createSequentialGroup()
-                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelStockButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPanelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -329,7 +349,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelStockTotal)
                     .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
 
         jTabbedPanelContent.addTab("Stock", jPanelStock);
@@ -368,10 +388,10 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanelCategoryButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonCategoryClear, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButtonCategoryCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCategoryModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButtonCategoryDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonCategoryDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanelCategoryButtonsLayout.setVerticalGroup(
@@ -396,8 +416,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                        .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelCategoryLayout.createSequentialGroup()
                         .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -413,7 +433,7 @@ public class View extends javax.swing.JFrame {
         jPanelCategoryLayout.setVerticalGroup(
             jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -424,10 +444,135 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCategoryName)
                     .addComponent(jTextFieldCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 59, Short.MAX_VALUE))
         );
 
         jTabbedPanelContent.addTab("Categoria", jPanelCategory);
+
+        jTableClient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPanelClient.setViewportView(jTableClient);
+
+        jButtonClientCreate.setText("Crear");
+
+        jButtonClientModify.setText("Modificar");
+
+        jButtonClientDelete.setText("Eliminar");
+
+        jButtonClientClear.setText("Limpiar");
+
+        javax.swing.GroupLayout jPanelClientButtonsLayout = new javax.swing.GroupLayout(jPanelClientButtons);
+        jPanelClientButtons.setLayout(jPanelClientButtonsLayout);
+        jPanelClientButtonsLayout.setHorizontalGroup(
+            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonClientClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonClientCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonClientModify, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(jButtonClientDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanelClientButtonsLayout.setVerticalGroup(
+            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonClientCreate)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonClientModify)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonClientDelete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButtonClientClear)
+                .addContainerGap())
+        );
+
+        jLabelClientId.setText("Identificador");
+
+        jLabelClientOfficialId.setText("DNI/NIE");
+
+        jLabelClientFullName.setText("Nombre");
+
+        jLabelClientEmail.setText("Email");
+
+        jLabelClientAddress.setText("Dirección");
+
+        jLabelClientTelephoneNumber.setText("Telefono");
+
+        jTextFieldClientId.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelClientLayout = new javax.swing.GroupLayout(jPanelClient);
+        jPanelClient.setLayout(jPanelClientLayout);
+        jPanelClientLayout.setHorizontalGroup(
+            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelClientLayout.createSequentialGroup()
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientEmail)
+                            .addComponent(jLabelClientId))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientOfficialId)
+                            .addComponent(jLabelClientAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jTextFieldClientAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelClientTelephoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientFullName, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jTextFieldClientFullName))))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelClientLayout.setVerticalGroup(
+            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientLayout.createSequentialGroup()
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientId)
+                    .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientOfficialId)
+                    .addComponent(jLabelClientFullName)
+                    .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldClientFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientEmail)
+                    .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientAddress)
+                    .addComponent(jTextFieldClientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientTelephoneNumber)
+                    .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        jTabbedPanelContent.addTab("Clientes", jPanelClient);
 
         jLabelTitle.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabelTitle.setText("VENTAS");
@@ -589,11 +734,45 @@ public class View extends javax.swing.JFrame {
     public JTextField getjTextFieldCategoryId() { return jTextFieldCategoryId; }
     public JTextField getjTextFieldCategoryName() { return jTextFieldCategoryName; }
     
+    
+    /**
+     * Client
+     */    
+    public JButton getjButtonClientCreate() { return jButtonClientCreate; }
+    public JButton getjButtonClientModify() { return jButtonClientModify; }
+    public JButton getjButtonClientDelete() { return jButtonClientDelete; }
+    public JButton getjButtonClientClear() { return jButtonClientClear; }
+    
+    public JLabel getjLabelClientId() { return jLabelClientId; }
+    public JLabel getjLabelClientOfficialId() { return jLabelClientOfficialId; }
+    public JLabel getjLabelClientFullName() { return jLabelClientFullName; }
+    public JLabel getjLabelClientEmail() { return jLabelClientEmail; }
+    public JLabel getjLabelClientAddress() { return jLabelClientAddress; }
+    public JLabel getjLabelClientTelephoneNumber() { return jLabelClientTelephoneNumber; }
+    
+    public JPanel getjPanelClient() { return jPanelClient; }
+    public JPanel getjPanelClientButtons() { return jPanelClientButtons; }
+
+    public JScrollPane getjScrollPanelClient() { return jScrollPanelClient; }
+
+    public JTable getjTableClient() { return jTableClient; }
+
+    public JTextField getjTextFieldClientId() { return jTextFieldClientId; }
+    public JTextField getjTextFieldClientOfficialId() { return jTextFieldClientOfficialId; }
+    public JTextField getjTextFieldClientFullName() { return jTextFieldClientFullName; }
+    public JTextField getjTextFieldClientEmail() { return jTextFieldClientEmail; }
+    public JTextField getjTextFieldClientAddress() { return jTextFieldClientAddress; }
+    public JTextField getjTextFieldClientTelephoneNumber() { return jTextFieldClientTelephoneNumber; }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCategoryClear;
     private javax.swing.JButton jButtonCategoryCreate;
     private javax.swing.JButton jButtonCategoryDelete;
     private javax.swing.JButton jButtonCategoryModify;
+    private javax.swing.JButton jButtonClientClear;
+    private javax.swing.JButton jButtonClientCreate;
+    private javax.swing.JButton jButtonClientDelete;
+    private javax.swing.JButton jButtonClientModify;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonProductClear;
     private javax.swing.JButton jButtonProductCreate;
@@ -607,6 +786,12 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxProductStock;
     private javax.swing.JLabel jLabelCategoryId;
     private javax.swing.JLabel jLabelCategoryName;
+    private javax.swing.JLabel jLabelClientAddress;
+    private javax.swing.JLabel jLabelClientEmail;
+    private javax.swing.JLabel jLabelClientFullName;
+    private javax.swing.JLabel jLabelClientId;
+    private javax.swing.JLabel jLabelClientOfficialId;
+    private javax.swing.JLabel jLabelClientTelephoneNumber;
     private javax.swing.JLabel jLabelProductCategory;
     private javax.swing.JLabel jLabelProductId;
     private javax.swing.JLabel jLabelProductModel;
@@ -619,19 +804,29 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanelCategory;
     private javax.swing.JPanel jPanelCategoryButtons;
+    private javax.swing.JPanel jPanelClient;
+    private javax.swing.JPanel jPanelClientButtons;
     private javax.swing.JPanel jPanelProduct;
     private javax.swing.JPanel jPanelProductButtons;
     private javax.swing.JPanel jPanelStock;
     private javax.swing.JPanel jPanelStockButtons;
     private javax.swing.JScrollPane jScrollPanelCategory;
+    private javax.swing.JScrollPane jScrollPanelClient;
     private javax.swing.JScrollPane jScrollPanelProduct;
     private javax.swing.JScrollPane jScrollPanelStock;
     private javax.swing.JTabbedPane jTabbedPanelContent;
     private javax.swing.JTable jTableCategory;
+    private javax.swing.JTable jTableClient;
     private javax.swing.JTable jTableProduct;
     private javax.swing.JTable jTableStock;
     private javax.swing.JTextField jTextFieldCategoryId;
     private javax.swing.JTextField jTextFieldCategoryName;
+    private javax.swing.JTextField jTextFieldClientAddress;
+    private javax.swing.JTextField jTextFieldClientEmail;
+    private javax.swing.JTextField jTextFieldClientFullName;
+    private javax.swing.JTextField jTextFieldClientId;
+    private javax.swing.JTextField jTextFieldClientOfficialId;
+    private javax.swing.JTextField jTextFieldClientTelephoneNumber;
     private javax.swing.JTextField jTextFieldProductId;
     private javax.swing.JTextField jTextFieldProductModel;
     private javax.swing.JTextField jTextFieldProductName;
