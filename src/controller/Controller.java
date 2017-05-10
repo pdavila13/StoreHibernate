@@ -6,6 +6,7 @@
 package controller;
 
 import entities.Category;
+import entities.Client;
 import entities.Product;
 import entities.Stock;
 import java.awt.event.ActionEvent;
@@ -24,7 +25,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -45,29 +45,35 @@ public class Controller {
     private ClassDAO<Product> modelProduct;
     private ClassDAO<Stock> modelStock;
     private ClassDAO<Category> modelCategory;
+    private ClassDAO<Client> modelClient;
     
     private TableColumn loadTableProduct;
     private TableColumn loadTableStock;
     private TableColumn loadTableCategory;
+    private TableColumn loadTableClient;
     
     private int filasel = -1;
 
-    public Controller(View view, ClassDAO<Product> modelProduct, ClassDAO<Stock> modelStock, ClassDAO<Category> modelCategory) {
+    public Controller(View view, ClassDAO<Product> modelProduct, ClassDAO<Stock> modelStock, ClassDAO<Category> modelCategory, ClassDAO<Client> modelClient) {
         this.view = view;
         this.modelProduct = modelProduct;
         this.modelStock = modelStock;
         this.modelCategory = modelCategory;
+        this.modelClient = modelClient;
         
         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getjTableProduct(), Product.class);
         loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getjTableStock(), Stock.class);
         loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(), view.getjTableCategory(), Category.class);
+        loadTableClient = loadTable((ArrayList) modelClient.obtainList(), view.getjTableClient(), Client.class);
         
-        loadCombo((ArrayList)modelStock.obtainList(),view.getjComboBoxProductStock());
-        loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
+        loadCombo((ArrayList) modelStock.obtainList(),view.getjComboBoxProductStock());
+        loadCombo((ArrayList) modelCategory.obtainList(),view.getjComboBoxProductCategory());
+        loadCombo((ArrayList) modelClient.obtainList(), view.getjComboBoxProductClient());
         
         controlProduct();
         controlStock();
         controlCategory();
+        controlClient();
         
         exitButton();
     }
@@ -83,15 +89,17 @@ public class Controller {
                             !view.getjTextFieldProductTraceMark().getText().trim().equals("") || 
                             !view.getjTextFieldProductModel().getText().trim().equals("") || 
                             !view.getjTextFieldProductPrice().getText().trim().equals(""))
-                        modelProduct.obtainList();
-
+                            
+                            modelProduct.obtainList();
+                        
                         Product p = new Product(
                                 view.getjTextFieldProductName().getText(),
                                 view.getjTextFieldProductTraceMark().getText(),
                                 view.getjTextFieldProductModel().getText(),
                                 Double.valueOf(view.getjTextFieldProductPrice().getText()),
                                 (Stock) view.getjComboBoxProductStock().getSelectedItem(),
-                                (Category) view.getjComboBoxProductCategory().getSelectedItem()
+                                (Category) view.getjComboBoxProductCategory().getSelectedItem(),
+                                (List<Client>) (Client) view.getjComboBoxProductClient().getSelectedItem()
                         );
                         modelProduct.store(p);
                         loadTable((ArrayList) modelProduct.obtainList(),view.getjTableProduct(),Product.class);
@@ -389,6 +397,110 @@ public class Controller {
         clearTextFieldCategory();
     }
     
+    private void controlClient() {
+        view.getjButtonClientCreate().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource().equals(view.getjButtonClientCreate())) {
+                    if(!view.getjTextFieldClientId().getText().trim().equals("") || 
+                           !view.getjTextFieldClientOfficialId().getText().trim().equals("") || 
+                           !view.getjTextFieldClientFullName().getText().trim().equals("") ||
+                           !view.getjTextFieldClientEmail().getText().trim().equals("") ||
+                           !view.getjTextFieldClientAddress().getText().trim().equals("") ||
+                           !view.getjTextFieldClientTelephoneNumber().getText().trim().equals("")) 
+                    modelClient.obtainList();
+
+                    Client c = new Client(
+                            view.getjTextFieldClientOfficialId().getText(),
+                            view.getjTextFieldClientFullName().getText(),
+                            view.getjTextFieldClientEmail().getText(),
+                            view.getjTextFieldClientAddress().getText(),
+                            view.getjTextFieldClientTelephoneNumber().getText()
+                    );
+                    modelClient.store(c);
+
+                    loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(),Client.class);
+                    loadCombo((ArrayList) modelClient.obtainList(),view.getjComboBoxProductClient());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No has introducido ningun cliente", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldClientId().setText("");
+                view.getjTextFieldClientOfficialId().setText("");
+                view.getjTextFieldClientFullName().setText("");
+                view.getjTextFieldClientEmail().setText("");
+                view.getjTextFieldClientAddress().setText("");
+                view.getjTextFieldClientTelephoneNumber().setText("");
+            }
+        });
+        
+        /*
+        view.getjButtonCategoryModify().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
+                if (view.getjTableCategory().getSelectedRow() != -1) {
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
+                    Category modifyCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
+                    modifyCategory.set2_category_name(view.getjTextFieldCategoryName().getText());
+
+                    view.getjTableCategory().removeColumn(loadTableCategory);
+                    modelCategory.update(modifyCategory);
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un categoria para modificarla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        
+        view.getjButtonCategoryDelete().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
+                if (view.getjTableCategory().getSelectedRow() != -1) {
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
+                    
+                    Category deleteCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
+                    view.getjTableCategory().removeColumn(loadTableCategory);
+                    modelCategory.destroy(deleteCategory);
+                    
+                    view.getjTableCategory().addColumn(loadTableCategory);
+                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccciona una categoria para eliminarla", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                view.getjTextFieldCategoryName().setText("");
+            }
+        });
+        */
+        
+        view.getjTableClient().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (view.getjTableClient().getSelectedRow() != -1) {
+                    super.mouseClicked(e);
+                    DefaultTableModel model = (DefaultTableModel) view.getjTableClient().getModel();
+                    view.getjTextFieldClientId().setText(model.getValueAt(Integer.valueOf(view.getjTableClient().getSelectedRow()), 0).toString());
+                    view.getjTextFieldClientOfficialId().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 1).toString());
+                    view.getjTextFieldClientFullName().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 2).toString());
+                    view.getjTextFieldClientEmail().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 3).toString());
+                    view.getjTextFieldClientAddress().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 4).toString());
+                    view.getjTextFieldClientTelephoneNumber().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 5).toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un cliente de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+ 
+        clearTextFieldClient();
+    }
+    
     public void clearTextFieldProduct() {
         view.getjButtonProductClear().addMouseListener(new MouseAdapter() {
             @Override
@@ -418,6 +530,20 @@ public class Controller {
             public void mouseClicked(MouseEvent e) {
                 view.getjTextFieldCategoryId().setText("");
                 view.getjTextFieldCategoryName().setText("");
+            }
+        });
+    }
+    
+    public void clearTextFieldClient() {
+        view.getjButtonClientClear().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getjTextFieldClientId().setText("");
+                view.getjTextFieldClientOfficialId().setText("");
+                view.getjTextFieldClientFullName().setText("");
+                view.getjTextFieldClientEmail().setText("");
+                view.getjTextFieldClientAddress().setText("");
+                view.getjTextFieldClientTelephoneNumber().setText("");
             }
         });
     }

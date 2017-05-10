@@ -7,6 +7,7 @@ package storehibernate;
 
 import controller.Controller;
 import entities.Category;
+import entities.Client;
 import entities.Product;
 import entities.Stock;
 import model.ClassDAO;
@@ -26,10 +27,11 @@ public class StoreHibernate {
         ClassDAO<Product> modelProduct = new ClassDAO<>(Product.class);
         ClassDAO<Stock> modelStock = new ClassDAO<>(Stock.class);
         ClassDAO<Category> modelCategory = new ClassDAO<>(Category.class);
+        ClassDAO<Client> modelClient = new ClassDAO<>(Client.class);
         
         View view = new View();
         
-        new Controller(view,modelProduct,modelStock,modelCategory); 
+        new Controller(view,modelProduct,modelStock,modelCategory,modelClient); 
     }
     
 }

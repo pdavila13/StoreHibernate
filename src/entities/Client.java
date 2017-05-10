@@ -6,22 +6,56 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-/**
- *
- * @author pdavila
- */
+@Entity
+@Table(name="clients")  
 public class Client {
     
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="client_id")
     private int _1_client_id;
+    
+    @Column(name="client_official_id")
     private String _2_client_official_id;
+    
+    @Column(name="client_fullName")
     private String _3_client_fullName;
+    
+    @Column(name="client_email")
     private String _4_client_email;
+    
+    @Column(name="client_address")
     private String _5_client_address;
+    
+    @Column(name="client_telephoneNumber")
     private String _6_client_telephoneNumber;
     
-    private ArrayList<Product> _7_buy = new ArrayList<>();
+    @ManyToMany(mappedBy="_8_sold")
+    private List<Product> _7_buy = new ArrayList<>();
 
+    public Client() {
+        //
+    }
+    
+    public Client(String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
+        this._7_buy = new ArrayList();
+        this._2_client_official_id = _2_client_official_id;
+        this._3_client_fullName = _3_client_fullName;
+        this._4_client_email = _4_client_email;
+        this._5_client_address = _5_client_address;
+        this._6_client_telephoneNumber = _6_client_telephoneNumber;
+    }
+    
     public int get1_client_id() {
         return _1_client_id;
     }
@@ -69,12 +103,17 @@ public class Client {
     public void set6_client_telephoneNumber(String _6_client_telephoneNumber) {
         this._6_client_telephoneNumber = _6_client_telephoneNumber;
     }
-
-    public ArrayList<Product> get7_buy() {
+    
+    public List<Product> get7_buy() {
         return _7_buy;
     }
 
-    public void set7_buy(ArrayList<Product> _7_buy) {
+    public void set7_buy(List<Product> _7_buy) {
         this._7_buy = _7_buy;
     }
+    
+    @Override
+    public String toString() {
+        return " " + _2_client_official_id;
+    } 
 }

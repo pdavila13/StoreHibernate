@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -52,21 +52,21 @@ public class Product {
     @JoinColumn(name="category_id", nullable=true)
     private Category _7_category;
     
-    @Transient
-    @Column(name="product_sold_client")
-    private ArrayList<Client> _8_sold =  new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name="products_clients")
+    private List<Client> _8_sold = new ArrayList<>();
 
     public Product() {
-        //
     }
     
-    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored, Category _7_category) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored, Category _7_category, List<Client> _8_sold) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;
         this._5_product_price = _5_product_price;
         this._6_stored = _6_stored;
         this._7_category = _7_category;
+        this._8_sold = new ArrayList<>();
     }
 
     public int get1_product_id() {
@@ -124,12 +124,12 @@ public class Product {
     public void set7_category(Category _7_category) {
         this._7_category = _7_category;
     }
-
-    public ArrayList<Client> get8_sold() {
+    
+    public List<Client> get8_sold() {
         return _8_sold;
     }
 
-    public void set8_sold(ArrayList<Client> _8_sold) {
+    public void set8_sold(List<Client> _8_sold) {
         this._8_sold = _8_sold;
     }
 

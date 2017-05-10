@@ -6,6 +6,7 @@
 package storehibernate;
 
 import entities.Category;
+import entities.Client;
 import entities.Product;
 import entities.Stock;
 import java.util.ArrayList;
@@ -39,10 +40,12 @@ public class StoreHibernateTest {
         Category c2 = null;
         Category c3 = null;
         
+        List<Client> cl1 = null;
+        
         //Created
-        Product p1 = new Product("Processador","INTEL","7500",153,s1,c1);
-        Product p2 = new Product("Motherboard","ASUS","970",197,s2,c2);
-        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3,c3);
+        Product p1 = new Product("Processador","INTEL","7500",153,s1,c1,cl1);
+        Product p2 = new Product("Motherboard","ASUS","970",197,s2,c2,cl1);
+        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3,c3,cl1);
         
         //Save
         destroy_product_id = ClassProductDAO.store(p1);
