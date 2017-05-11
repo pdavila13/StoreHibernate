@@ -41,7 +41,11 @@ public class Client {
     @Column(name="client_telephoneNumber")
     private String _6_client_telephoneNumber;
     
+<<<<<<< HEAD
     @ManyToMany(mappedBy="_8_sold",fetch = FetchType.EAGER)
+=======
+    @ManyToMany(mappedBy="_8_sold", fetch = FetchType.EAGER)
+>>>>>>> 8def50f5c29e7eee7426cd3a156eb7c4b96a128b
     private List<Product> _7_buy = new ArrayList<>();
 
     public Client() {
@@ -49,7 +53,6 @@ public class Client {
     }
     
     public Client(String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
-        this._7_buy = new ArrayList();
         this._2_client_official_id = _2_client_official_id;
         this._3_client_fullName = _3_client_fullName;
         this._4_client_email = _4_client_email;

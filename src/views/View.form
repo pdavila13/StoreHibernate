@@ -63,6 +63,215 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanelClient">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Clientes">
+                <Property name="tabTitle" type="java.lang.String" value="Clientes"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPanelClient" min="-2" pref="818" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabelClientEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelClientId" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextFieldClientId" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldClientEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabelClientOfficialId" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelClientAddress" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldClientOfficialId" pref="150" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldClientAddress" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelClientTelephoneNumber" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelClientFullName" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldClientTelephoneNumber" pref="150" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldClientFullName" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jPanelClientButtons" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanelClientButtons" max="32767" attributes="0"/>
+                          <Component id="jScrollPanelClient" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelClientId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelClientOfficialId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelClientFullName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientOfficialId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientFullName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelClientAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelClientTelephoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldClientTelephoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPanelClient">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTableClient">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanelClientButtons">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButtonClientClear" max="32767" attributes="0"/>
+                              <Component id="jButtonClientCreate" max="32767" attributes="0"/>
+                              <Component id="jButtonClientModify" pref="106" max="32767" attributes="0"/>
+                              <Component id="jButtonClientDelete" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButtonClientCreate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButtonClientModify" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButtonClientDelete" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <Component id="jButtonClientClear" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="jButtonClientCreate">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Crear"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonClientModify">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonClientDelete">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonClientClear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Limpiar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabelClientId">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Identificador"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelClientOfficialId">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="DNI/NIE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelClientFullName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelClientEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Email"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelClientAddress">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelClientTelephoneNumber">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefono"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientId">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientOfficialId">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientFullName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientEmail">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientAddress">
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldClientTelephoneNumber">
+            </Component>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="jPanelProduct">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -653,215 +862,6 @@
                 </Component>
               </SubComponents>
             </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanelClient">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Clientes">
-                <Property name="tabTitle" type="java.lang.String" value="Clientes"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPanelClient" min="-2" pref="818" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabelClientEmail" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientId" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldClientId" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldClientEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabelClientOfficialId" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientAddress" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextFieldClientOfficialId" pref="150" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldClientAddress" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelClientTelephoneNumber" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientFullName" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextFieldClientTelephoneNumber" pref="150" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldClientFullName" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanelClientButtons" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanelClientButtons" max="32767" attributes="0"/>
-                          <Component id="jScrollPanelClient" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelClientId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelClientOfficialId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelClientFullName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientOfficialId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientFullName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelClientAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelClientTelephoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientTelephoneNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPanelClient">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="jTableClient">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jPanelClientButtons">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButtonClientClear" max="32767" attributes="0"/>
-                              <Component id="jButtonClientCreate" max="32767" attributes="0"/>
-                              <Component id="jButtonClientModify" pref="106" max="32767" attributes="0"/>
-                              <Component id="jButtonClientDelete" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonClientCreate" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonClientModify" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonClientDelete" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
-                          <Component id="jButtonClientClear" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JButton" name="jButtonClientCreate">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Crear"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonClientModify">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Modificar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonClientDelete">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonClientClear">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Limpiar"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabelClientId">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Identificador"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelClientOfficialId">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="DNI/NIE"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelClientFullName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelClientEmail">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Email"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelClientAddress">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelClientTelephoneNumber">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Telefono"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientId">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientOfficialId">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientFullName">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientEmail">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientAddress">
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldClientTelephoneNumber">
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
