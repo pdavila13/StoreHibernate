@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +41,7 @@ public class Client {
     @Column(name="client_telephoneNumber")
     private String _6_client_telephoneNumber;
     
-    @ManyToMany(mappedBy="_8_sold")
+    @ManyToMany(mappedBy="_8_sold", fetch = FetchType.EAGER)
     private List<Product> _7_buy = new ArrayList<>();
 
     public Client() {
@@ -48,7 +49,6 @@ public class Client {
     }
     
     public Client(String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
-        this._7_buy = new ArrayList();
         this._2_client_official_id = _2_client_official_id;
         this._3_client_fullName = _3_client_fullName;
         this._4_client_email = _4_client_email;

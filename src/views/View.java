@@ -43,6 +43,26 @@ public class View extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPanelContent = new javax.swing.JTabbedPane();
+        jPanelClient = new javax.swing.JPanel();
+        jScrollPanelClient = new javax.swing.JScrollPane();
+        jTableClient = new javax.swing.JTable();
+        jPanelClientButtons = new javax.swing.JPanel();
+        jButtonClientCreate = new javax.swing.JButton();
+        jButtonClientModify = new javax.swing.JButton();
+        jButtonClientDelete = new javax.swing.JButton();
+        jButtonClientClear = new javax.swing.JButton();
+        jLabelClientId = new javax.swing.JLabel();
+        jLabelClientOfficialId = new javax.swing.JLabel();
+        jLabelClientFullName = new javax.swing.JLabel();
+        jLabelClientEmail = new javax.swing.JLabel();
+        jLabelClientAddress = new javax.swing.JLabel();
+        jLabelClientTelephoneNumber = new javax.swing.JLabel();
+        jTextFieldClientId = new javax.swing.JTextField();
+        jTextFieldClientOfficialId = new javax.swing.JTextField();
+        jTextFieldClientFullName = new javax.swing.JTextField();
+        jTextFieldClientEmail = new javax.swing.JTextField();
+        jTextFieldClientAddress = new javax.swing.JTextField();
+        jTextFieldClientTelephoneNumber = new javax.swing.JTextField();
         jPanelProduct = new javax.swing.JPanel();
         jScrollPanelProduct = new javax.swing.JScrollPane();
         jTableProduct = new javax.swing.JTable();
@@ -91,30 +111,135 @@ public class View extends javax.swing.JFrame {
         jButtonCategoryModify = new javax.swing.JButton();
         jButtonCategoryDelete = new javax.swing.JButton();
         jButtonCategoryClear = new javax.swing.JButton();
-        jPanelClient = new javax.swing.JPanel();
-        jScrollPanelClient = new javax.swing.JScrollPane();
-        jTableClient = new javax.swing.JTable();
-        jPanelClientButtons = new javax.swing.JPanel();
-        jButtonClientCreate = new javax.swing.JButton();
-        jButtonClientModify = new javax.swing.JButton();
-        jButtonClientDelete = new javax.swing.JButton();
-        jButtonClientClear = new javax.swing.JButton();
-        jLabelClientId = new javax.swing.JLabel();
-        jLabelClientOfficialId = new javax.swing.JLabel();
-        jLabelClientFullName = new javax.swing.JLabel();
-        jLabelClientEmail = new javax.swing.JLabel();
-        jLabelClientAddress = new javax.swing.JLabel();
-        jLabelClientTelephoneNumber = new javax.swing.JLabel();
-        jTextFieldClientId = new javax.swing.JTextField();
-        jTextFieldClientOfficialId = new javax.swing.JTextField();
-        jTextFieldClientFullName = new javax.swing.JTextField();
-        jTextFieldClientEmail = new javax.swing.JTextField();
-        jTextFieldClientAddress = new javax.swing.JTextField();
-        jTextFieldClientTelephoneNumber = new javax.swing.JTextField();
         jLabelTitle = new javax.swing.JLabel();
         jButtonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableClient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPanelClient.setViewportView(jTableClient);
+
+        jButtonClientCreate.setText("Crear");
+
+        jButtonClientModify.setText("Modificar");
+
+        jButtonClientDelete.setText("Eliminar");
+
+        jButtonClientClear.setText("Limpiar");
+
+        javax.swing.GroupLayout jPanelClientButtonsLayout = new javax.swing.GroupLayout(jPanelClientButtons);
+        jPanelClientButtons.setLayout(jPanelClientButtonsLayout);
+        jPanelClientButtonsLayout.setHorizontalGroup(
+            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonClientClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonClientCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonClientModify, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                    .addComponent(jButtonClientDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanelClientButtonsLayout.setVerticalGroup(
+            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonClientCreate)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonClientModify)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonClientDelete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButtonClientClear)
+                .addContainerGap())
+        );
+
+        jLabelClientId.setText("Identificador");
+
+        jLabelClientOfficialId.setText("DNI/NIE");
+
+        jLabelClientFullName.setText("Nombre");
+
+        jLabelClientEmail.setText("Email");
+
+        jLabelClientAddress.setText("Dirección");
+
+        jLabelClientTelephoneNumber.setText("Telefono");
+
+        jTextFieldClientId.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelClientLayout = new javax.swing.GroupLayout(jPanelClient);
+        jPanelClient.setLayout(jPanelClientLayout);
+        jPanelClientLayout.setHorizontalGroup(
+            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelClientLayout.createSequentialGroup()
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientEmail)
+                            .addComponent(jLabelClientId))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientOfficialId)
+                            .addComponent(jLabelClientAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jTextFieldClientAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelClientTelephoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelClientFullName, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jTextFieldClientFullName))))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelClientLayout.setVerticalGroup(
+            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClientLayout.createSequentialGroup()
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientId)
+                    .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientOfficialId)
+                    .addComponent(jLabelClientFullName)
+                    .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldClientFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientEmail)
+                    .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientAddress)
+                    .addComponent(jTextFieldClientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientTelephoneNumber)
+                    .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        jTabbedPanelContent.addTab("Clientes", jPanelClient);
 
         jTableProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -458,131 +583,6 @@ public class View extends javax.swing.JFrame {
         );
 
         jTabbedPanelContent.addTab("Categoria", jPanelCategory);
-
-        jTableClient.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPanelClient.setViewportView(jTableClient);
-
-        jButtonClientCreate.setText("Crear");
-
-        jButtonClientModify.setText("Modificar");
-
-        jButtonClientDelete.setText("Eliminar");
-
-        jButtonClientClear.setText("Limpiar");
-
-        javax.swing.GroupLayout jPanelClientButtonsLayout = new javax.swing.GroupLayout(jPanelClientButtons);
-        jPanelClientButtons.setLayout(jPanelClientButtonsLayout);
-        jPanelClientButtonsLayout.setHorizontalGroup(
-            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonClientClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonClientCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonClientModify, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                    .addComponent(jButtonClientDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanelClientButtonsLayout.setVerticalGroup(
-            jPanelClientButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelClientButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonClientCreate)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonClientModify)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonClientDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jButtonClientClear)
-                .addContainerGap())
-        );
-
-        jLabelClientId.setText("Identificador");
-
-        jLabelClientOfficialId.setText("DNI/NIE");
-
-        jLabelClientFullName.setText("Nombre");
-
-        jLabelClientEmail.setText("Email");
-
-        jLabelClientAddress.setText("Dirección");
-
-        jLabelClientTelephoneNumber.setText("Telefono");
-
-        jTextFieldClientId.setEnabled(false);
-
-        javax.swing.GroupLayout jPanelClientLayout = new javax.swing.GroupLayout(jPanelClient);
-        jPanelClient.setLayout(jPanelClientLayout);
-        jPanelClientLayout.setHorizontalGroup(
-            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelClientLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelClientLayout.createSequentialGroup()
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelClientEmail)
-                            .addComponent(jLabelClientId))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81)
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelClientOfficialId)
-                            .addComponent(jLabelClientAddress))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jTextFieldClientAddress))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelClientTelephoneNumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelClientFullName, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jTextFieldClientFullName))))
-                .addGap(18, 18, 18)
-                .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelClientLayout.setVerticalGroup(
-            jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelClientLayout.createSequentialGroup()
-                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanelClientButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPanelClient, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelClientId)
-                    .addComponent(jTextFieldClientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelClientOfficialId)
-                    .addComponent(jLabelClientFullName)
-                    .addComponent(jTextFieldClientOfficialId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldClientFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelClientEmail)
-                    .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelClientAddress)
-                    .addComponent(jTextFieldClientAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelClientTelephoneNumber)
-                    .addComponent(jTextFieldClientTelephoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
-        jTabbedPanelContent.addTab("Clientes", jPanelClient);
 
         jLabelTitle.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabelTitle.setText("VENTAS");

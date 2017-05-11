@@ -434,51 +434,64 @@ public class Controller {
             }
         });
         
-        /*
-        view.getjButtonCategoryModify().addActionListener(new ActionListener() {
+        view.getjButtonClientModify().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
-                if (view.getjTableCategory().getSelectedRow() != -1) {
-                    view.getjTableCategory().addColumn(loadTableCategory);
+                TableColumnModel tcm = (TableColumnModel) view.getjTableClient().getColumnModel();
+                if (view.getjTableClient().getSelectedRow() != -1) {
+                    view.getjTableClient().addColumn(loadTableClient);
                     
-                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
-                    Category modifyCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
-                    modifyCategory.set2_category_name(view.getjTextFieldCategoryName().getText());
-
-                    view.getjTableCategory().removeColumn(loadTableCategory);
-                    modelCategory.update(modifyCategory);
-                    view.getjTableCategory().addColumn(loadTableCategory);
-                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableClient().getModel();
+                    Client modifyClient = (Client) tm.getValueAt(view.getjTableClient().getSelectedRow(), tm.getColumnCount() -1);
+                    modifyClient.set2_client_official_id(view.getjTextFieldClientOfficialId().getText());
+                    modifyClient.set3_client_fullName(view.getjTextFieldClientFullName().getText());
+                    modifyClient.set4_client_email(view.getjTextFieldClientEmail().getText());
+                    modifyClient.set5_client_address(view.getjTextFieldClientAddress().getText());
+                    modifyClient.set6_client_telephoneNumber(view.getjTextFieldClientTelephoneNumber().getText());
+                    
+                    view.getjTableClient().removeColumn(loadTableClient);
+                    modelClient.update(modifyClient);
+                    view.getjTableClient().addColumn(loadTableClient);
+                    loadTableClient = loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(), Client.class);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona un categoria para modificarla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Selecciona un cliente para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
                 
-                view.getjTextFieldCategoryName().setText("");
+                view.getjTextFieldClientId().setText("");
+                view.getjTextFieldClientOfficialId().setText("");
+                view.getjTextFieldClientFullName().setText("");
+                view.getjTextFieldClientEmail().setText("");
+                view.getjTextFieldClientAddress().setText("");
+                view.getjTextFieldClientTelephoneNumber().setText("");
             }
         });
         
-        view.getjButtonCategoryDelete().addActionListener(new ActionListener() {
+        view.getjButtonClientDelete().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
-                if (view.getjTableCategory().getSelectedRow() != -1) {
-                    DefaultTableModel tm = (DefaultTableModel) view.getjTableCategory().getModel();
+                TableColumnModel tcm = (TableColumnModel) view.getjTableClient().getColumnModel();
+                if (view.getjTableClient().getSelectedRow() != -1) {
+                    DefaultTableModel tm = (DefaultTableModel) view.getjTableClient().getModel();
                     
-                    Category deleteCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
-                    view.getjTableCategory().removeColumn(loadTableCategory);
-                    modelCategory.destroy(deleteCategory);
+                    Client deleteClient = (Client) tm.getValueAt(view.getjTableClient().getSelectedRow(), tm.getColumnCount() -1);
+                    view.getjTableClient().removeColumn(loadTableClient);
+                    modelClient.destroy(deleteClient);
                     
-                    view.getjTableCategory().addColumn(loadTableCategory);
-                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                    view.getjTableClient().addColumn(loadTableClient);
+                    loadTableClient = loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(),Client.class);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Seleccciona una categoria para eliminarla", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Seleccciona un cliente para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 
-                view.getjTextFieldCategoryName().setText("");
+                view.getjTextFieldClientId().setText("");
+                view.getjTextFieldClientOfficialId().setText("");
+                view.getjTextFieldClientFullName().setText("");
+                view.getjTextFieldClientEmail().setText("");
+                view.getjTextFieldClientAddress().setText("");
+                view.getjTextFieldClientTelephoneNumber().setText("");
             }
         });
-        */
+        
         
         view.getjTableClient().addMouseListener(new MouseAdapter() {
             @Override
