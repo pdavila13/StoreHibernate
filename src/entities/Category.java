@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,9 +33,8 @@ public class Category {
     @Column(name="category_name")
     private String _2_category_name;
     
-    @ManyToOne(optional = true)
-    @JoinColumn(name="product_id", nullable=true)
-    private Product _3_product;
+    @OneToMany(mappedBy="_7_belongs")
+    private List<Product> _3_category_product = new ArrayList<>();
 
     public Category() {
         //
@@ -58,12 +60,12 @@ public class Category {
         this._2_category_name = _2_category_name;
     }
     
-    public Product get3_product() {
-        return _3_product;
+    public List<Product> get3_category_product() {
+        return _3_category_product;
     }
 
-    public void set3_product(Product _3_product) {
-        this._3_product = _3_product;
+    public void set3_category_product(List<Product> _3_category_product) {
+        this._3_category_product = _3_category_product;
     }
 
     @Override

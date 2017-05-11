@@ -41,8 +41,8 @@ public class Client {
     @Column(name="client_telephoneNumber")
     private String _6_client_telephoneNumber;
     
-    @ManyToMany(mappedBy="_8_sold",fetch = FetchType.EAGER)
-    private List<Product> _7_buy = new ArrayList<>();
+    //@ManyToMany(mappedBy="_8_sold",fetch = FetchType.EAGER)
+    //private List<Product> _7_buy = new ArrayList<>();
 
     public Client() {
         //
@@ -104,6 +104,7 @@ public class Client {
         this._6_client_telephoneNumber = _6_client_telephoneNumber;
     }
     
+    /*
     public List<Product> get7_buy() {
         return _7_buy;
     }
@@ -111,6 +112,7 @@ public class Client {
     public void set7_buy(List<Product> _7_buy) {
         this._7_buy = _7_buy;
     }
+*/
     
     @Override
     public String toString() {

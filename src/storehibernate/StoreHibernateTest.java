@@ -23,7 +23,7 @@ public class StoreHibernateTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        /*
         ClassDAO ClassProductDAO = new ClassDAO(Product.class);
         ClassDAO ClassCategoryDAO = new ClassDAO(Category.class);
         
@@ -43,9 +43,9 @@ public class StoreHibernateTest {
         List<Client> cl1 = null;
         
         //Created
-        Product p1 = new Product("Processador","INTEL","7500",153,s1,c1,cl1);
-        Product p2 = new Product("Motherboard","ASUS","970",197,s2,c2,cl1);
-        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3,c3,cl1);
+        Product p1 = new Product("Processador","INTEL","7500",153,s1,c1);
+        Product p2 = new Product("Motherboard","ASUS","970",197,s2,c2);
+        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3,c3);
         
         //Save
         destroy_product_id = ClassProductDAO.store(p1);
@@ -71,7 +71,7 @@ public class StoreHibernateTest {
         for (Product p : listProducts) {
             System.out.println(" -> " + p.get2_product_name());
         }
-        
+        */
         System.exit(0);
     }
 }

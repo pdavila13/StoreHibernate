@@ -6,11 +6,7 @@
 package storehibernate;
 
 import controller.Controller;
-import entities.Category;
-import entities.Client;
-import entities.Product;
-import entities.Stock;
-import model.ClassDAO;
+import model.Model;
 import views.View;
 
 /**
@@ -18,20 +14,16 @@ import views.View;
  * @author pdavila
  */
 public class StoreHibernate {
+    
+    static Model model = new Model();
+    static View view = new View();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        ClassDAO<Product> modelProduct = new ClassDAO<>(Product.class);
-        ClassDAO<Stock> modelStock = new ClassDAO<>(Stock.class);
-        ClassDAO<Category> modelCategory = new ClassDAO<>(Category.class);
-        ClassDAO<Client> modelClient = new ClassDAO<>(Client.class);
-        
-        View view = new View();
-        
-        Controller controller = new Controller(view, modelProduct, modelStock, modelCategory, modelClient); 
+        new Controller(model, view);
     }
     
 }

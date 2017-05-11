@@ -21,13 +21,13 @@ public class ClassDAO<T> {
     private Session session;
     private Transaction tx;
     
-    private Class p;
+    private Class<T> p;
     
     public ClassDAO() {
         //
     }
     
-    public ClassDAO(Class<T> p) {
+    public ClassDAO(Class<T> p, Session sesion) {
         this.p = p;
         this.session = session;
     }
