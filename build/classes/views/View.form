@@ -292,7 +292,6 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLabelProductModel" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelProductId" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelProductCategory" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -302,10 +301,7 @@
                                       <Component id="jLabelProductName" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextFieldProductModel" pref="150" max="32767" attributes="0"/>
-                                          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextFieldProductModel" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace pref="121" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabelProductPrice" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -332,6 +328,8 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jComboBoxProductClient" min="-2" pref="150" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabelProductCategory" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jComboBoxProductCategory" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -380,19 +378,13 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelProductCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelProductClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxProductClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBoxProductCategory" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelProductCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelProductClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxProductClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxProductCategory" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -555,25 +547,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Limpiar"/>
                   </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="jList1">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -764,10 +737,16 @@
                                   <Component id="jLabelCategoryId" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldCategoryId" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTextFieldCategoryName" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jTextFieldCategoryId" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                      <Component id="jLabelCategoryProducts" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPaneCategoryProducts" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -783,16 +762,22 @@
                           <Component id="jScrollPanelCategory" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelCategoryId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCategoryId" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelCategoryId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCategoryId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCategoryProducts" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelCategoryName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCategoryName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jScrollPaneCategoryProducts" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelCategoryName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCategoryName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -829,6 +814,11 @@
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabelCategoryProducts">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Productos"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldCategoryId">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -836,6 +826,25 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldCategoryName">
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPaneCategoryProducts">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="jListCategoryProducts">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
             <Container class="javax.swing.JPanel" name="jPanelCategoryButtons">
 
               <Layout>

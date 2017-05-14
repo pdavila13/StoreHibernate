@@ -25,7 +25,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +53,7 @@ public class Controller {
     
     private ArrayList<Product> category_product;
     private Stock stock;
+    private Category category;
     
     private int filasel = -1;
 
@@ -67,9 +70,11 @@ public class Controller {
         loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
         //loadCombo((ArrayList) modelClient.obtainList(), view.getjComboBoxProductClient());
         
+        loadList((ArrayList) model.getProductClassDAO().obtainList(), view.getjListCategoryProducts());
+        
         controlProduct();
         controlStock();
-        //controlCategory();
+        controlCategory();
         //controlClient();
         
         exitButton();
@@ -96,25 +101,24 @@ public class Controller {
                                 Double.valueOf(view.getjTextFieldProductPrice().getText())
                         ));
                         
-                        //model.getCategory().set3_category_product(category_product);
-                        
                         stock = (Stock) view.getjComboBoxProductStock().getSelectedItem();
                         if (stock != null) {
                             model.getProduct().set6_stored(stock);
                         }
                         
-                        /*
-                        preferida = (Arma)vista.getjComboBoxArmaPreferida().getSelectedItem();
-                        if (preferida != null) {
-                            odb.getSoldat().set7preferida(preferida);
-                        }*/
-                        
+                        category = (Category) view.getjComboBoxProductCategory().getSelectedItem();
+                        if (category != null) {
+                            model.getProduct().set7_belongs(category);
+                        }
+                                                
                         //model.getProduct().set6_stored(new ArrayList<>());
-                        //(Category) view.getjComboBoxProductCategory().getSelectedItem()
+                        
                         //(List<Client>) (Client) view.getjComboBoxProductClient().getSelectedItem()
                         
                         model.getProductClassDAO().store(model.getProduct());
                         loadTableProduct = loadTable((ArrayList) model.getProductClassDAO().obtainList(), view.getjTableProduct(), Product.class);
+                        loadTableCategory = loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(), Category.class);
+
                         view.getjTableProduct().setRowSelectionInterval(view.getjTableProduct().getRowCount()-1, view.getjTableProduct().getRowCount()-1);
                     } catch(NumberFormatException ex) {
                         JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
@@ -329,7 +333,6 @@ public class Controller {
         clearTextFieldStock();
     }
     
-    /*
     private void controlCategory() {
         view.getjButtonCategoryCreate().addActionListener(new ActionListener() {
             @Override
@@ -337,15 +340,17 @@ public class Controller {
                 if(e.getSource().equals(view.getjButtonCategoryCreate())) {
                     if(!view.getjTextFieldCategoryId().getText().trim().equals("") ||
                        !view.getjTextFieldCategoryName().getText().trim().equals(""))
-                    modelCategory.obtainList();
+                    model.getCategoryClassDAO().obtainList();
 
                     Category c = new Category(
                             view.getjTextFieldCategoryName().getText()
                     );
-                    modelCategory.store(c);
+                    model.getCategoryClassDAO().store(c);
+                    
+                    
 
-                    loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
-                    loadCombo((ArrayList)modelCategory.obtainList(),view.getjComboBoxProductCategory());
+                    loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(),Category.class);
+                    loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ninguna categoria", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -354,6 +359,7 @@ public class Controller {
             }
         });
         
+        /*
         view.getjButtonCategoryModify().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -397,6 +403,7 @@ public class Controller {
                 view.getjTextFieldCategoryName().setText("");
             }
         });
+        */
         
         view.getjTableCategory().addMouseListener(new MouseAdapter() {
             @Override
@@ -404,6 +411,7 @@ public class Controller {
                 if (view.getjTableCategory().getSelectedRow() != -1) {
                     super.mouseClicked(e);
                     DefaultTableModel model = (DefaultTableModel) view.getjTableCategory().getModel();
+                    
                     view.getjTextFieldCategoryId().setText(model.getValueAt(Integer.valueOf(view.getjTableCategory().getSelectedRow()), 0).toString());
                     view.getjTextFieldCategoryName().setText(model.getValueAt(view.getjTableCategory().getSelectedRow(), 1).toString());
                 } else {
@@ -422,7 +430,7 @@ public class Controller {
         
         clearTextFieldCategory();
     }
-    */
+        
     /*
     private void controlClient() {
         view.getjButtonClientCreate().addActionListener(new ActionListener() {
@@ -688,6 +696,19 @@ public class Controller {
     //per carregar un JComboBox a partir d'un ArrayList que conté les dades
     private void loadCombo(ArrayList resultSet, JComboBox combo) {
         combo.setModel(new DefaultComboBoxModel((resultSet != null ? resultSet.toArray() : new Object[]{})));
+    }
+    
+    //per carregar un jList a partir d'un ArrayList que conté les dades
+    public void loadList(ArrayList resultSet, JList list) {
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Recorrer el contenido del ArrayList
+        for(int i=0; i<resultSet.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, resultSet.get(i));
+        }
+        //Asociar el modelo de lista al JList
+        list.setModel(listModel);
     }
     
     private static class OrdenarMetodeClasseAlfabeticament implements Comparator {
