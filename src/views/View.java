@@ -43,6 +43,33 @@ public class View extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPanelContent = new javax.swing.JTabbedPane();
+        jPanelStock = new javax.swing.JPanel();
+        jScrollPanelStock = new javax.swing.JScrollPane();
+        jTableStock = new javax.swing.JTable();
+        jLabelStockId = new javax.swing.JLabel();
+        jLabelStockTotal = new javax.swing.JLabel();
+        jTextFieldStockId = new javax.swing.JTextField();
+        jTextFieldStockTotal = new javax.swing.JTextField();
+        jPanelStockButtons = new javax.swing.JPanel();
+        jButtonStockCreate = new javax.swing.JButton();
+        jButtonStockModify = new javax.swing.JButton();
+        jButtonStockDelete = new javax.swing.JButton();
+        jButtonStockClear = new javax.swing.JButton();
+        jPanelCategory = new javax.swing.JPanel();
+        jScrollPanelCategory = new javax.swing.JScrollPane();
+        jTableCategory = new javax.swing.JTable();
+        jLabelCategoryId = new javax.swing.JLabel();
+        jLabelCategoryName = new javax.swing.JLabel();
+        jLabelCategoryProducts = new javax.swing.JLabel();
+        jTextFieldCategoryId = new javax.swing.JTextField();
+        jTextFieldCategoryName = new javax.swing.JTextField();
+        jScrollPaneCategoryProducts = new javax.swing.JScrollPane();
+        jListCategoryProducts = new javax.swing.JList<>();
+        jPanelCategoryButtons = new javax.swing.JPanel();
+        jButtonCategoryCreate = new javax.swing.JButton();
+        jButtonCategoryModify = new javax.swing.JButton();
+        jButtonCategoryDelete = new javax.swing.JButton();
+        jButtonCategoryClear = new javax.swing.JButton();
         jPanelClient = new javax.swing.JPanel();
         jScrollPanelClient = new javax.swing.JScrollPane();
         jTableClient = new javax.swing.JTable();
@@ -87,37 +114,212 @@ public class View extends javax.swing.JFrame {
         jButtonProductModify = new javax.swing.JButton();
         jButtonProductDelete = new javax.swing.JButton();
         jButtonProductClear = new javax.swing.JButton();
-        jPanelStock = new javax.swing.JPanel();
-        jScrollPanelStock = new javax.swing.JScrollPane();
-        jTableStock = new javax.swing.JTable();
-        jLabelStockId = new javax.swing.JLabel();
-        jLabelStockTotal = new javax.swing.JLabel();
-        jTextFieldStockId = new javax.swing.JTextField();
-        jTextFieldStockTotal = new javax.swing.JTextField();
-        jPanelStockButtons = new javax.swing.JPanel();
-        jButtonStockCreate = new javax.swing.JButton();
-        jButtonStockModify = new javax.swing.JButton();
-        jButtonStockDelete = new javax.swing.JButton();
-        jButtonStockClear = new javax.swing.JButton();
-        jPanelCategory = new javax.swing.JPanel();
-        jScrollPanelCategory = new javax.swing.JScrollPane();
-        jTableCategory = new javax.swing.JTable();
-        jLabelCategoryId = new javax.swing.JLabel();
-        jLabelCategoryName = new javax.swing.JLabel();
-        jLabelCategoryProducts = new javax.swing.JLabel();
-        jTextFieldCategoryId = new javax.swing.JTextField();
-        jTextFieldCategoryName = new javax.swing.JTextField();
-        jScrollPaneCategoryProducts = new javax.swing.JScrollPane();
-        jListCategoryProducts = new javax.swing.JList<>();
-        jPanelCategoryButtons = new javax.swing.JPanel();
-        jButtonCategoryCreate = new javax.swing.JButton();
-        jButtonCategoryModify = new javax.swing.JButton();
-        jButtonCategoryDelete = new javax.swing.JButton();
-        jButtonCategoryClear = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
         jButtonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTableStock.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPanelStock.setViewportView(jTableStock);
+
+        jLabelStockId.setText("Identificador");
+
+        jLabelStockTotal.setText("Total");
+
+        jTextFieldStockId.setEnabled(false);
+
+        jButtonStockCreate.setText("Crear");
+
+        jButtonStockModify.setText("Modificar");
+
+        jButtonStockDelete.setText("Eliminar");
+
+        jButtonStockClear.setText("Limpiar");
+
+        javax.swing.GroupLayout jPanelStockButtonsLayout = new javax.swing.GroupLayout(jPanelStockButtons);
+        jPanelStockButtons.setLayout(jPanelStockButtonsLayout);
+        jPanelStockButtonsLayout.setHorizontalGroup(
+            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelStockButtonsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonStockClear, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonStockDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStockModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonStockCreate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanelStockButtonsLayout.setVerticalGroup(
+            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStockButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonStockCreate)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonStockModify)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonStockDelete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButtonStockClear)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelStockLayout = new javax.swing.GroupLayout(jPanelStock);
+        jPanelStock.setLayout(jPanelStockLayout);
+        jPanelStockLayout.setHorizontalGroup(
+            jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStockLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelStockLayout.createSequentialGroup()
+                        .addComponent(jScrollPanelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelStockButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelStockLayout.createSequentialGroup()
+                        .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelStockTotal)
+                            .addComponent(jLabelStockId))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelStockLayout.setVerticalGroup(
+            jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStockLayout.createSequentialGroup()
+                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelStockButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPanelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelStockId)
+                    .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelStockTotal)
+                    .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 17, Short.MAX_VALUE))
+        );
+
+        jTabbedPanelContent.addTab("Stock", jPanelStock);
+
+        jTableCategory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPanelCategory.setViewportView(jTableCategory);
+
+        jLabelCategoryId.setText("Identificador");
+
+        jLabelCategoryName.setText("Nombre");
+
+        jLabelCategoryProducts.setText("Productos");
+
+        jTextFieldCategoryId.setEnabled(false);
+
+        jScrollPaneCategoryProducts.setViewportView(jListCategoryProducts);
+
+        jButtonCategoryCreate.setText("Crear");
+
+        jButtonCategoryModify.setText("Modificar");
+
+        jButtonCategoryDelete.setText("Eliminar");
+
+        jButtonCategoryClear.setText("Limpiar");
+
+        javax.swing.GroupLayout jPanelCategoryButtonsLayout = new javax.swing.GroupLayout(jPanelCategoryButtons);
+        jPanelCategoryButtons.setLayout(jPanelCategoryButtonsLayout);
+        jPanelCategoryButtonsLayout.setHorizontalGroup(
+            jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonCategoryModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCategoryCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanelCategoryButtonsLayout.setVerticalGroup(
+            jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonCategoryCreate)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCategoryModify)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCategoryDelete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButtonCategoryClear)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelCategoryLayout = new javax.swing.GroupLayout(jPanelCategory);
+        jPanelCategory.setLayout(jPanelCategoryLayout);
+        jPanelCategoryLayout.setHorizontalGroup(
+            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                        .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelCategoryName)
+                            .addComponent(jLabelCategoryId))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                                .addComponent(jTextFieldCategoryId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                                .addComponent(jLabelCategoryProducts)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPaneCategoryProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanelCategoryLayout.setVerticalGroup(
+            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelCategoryId)
+                            .addComponent(jTextFieldCategoryId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelCategoryProducts))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelCategoryName)
+                            .addComponent(jTextFieldCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPaneCategoryProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
+        );
+
+        jTabbedPanelContent.addTab("Categoria", jPanelCategory);
 
         jTableClient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -389,209 +591,6 @@ public class View extends javax.swing.JFrame {
         );
 
         jTabbedPanelContent.addTab("Productos", jPanelProduct);
-
-        jTableStock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPanelStock.setViewportView(jTableStock);
-
-        jLabelStockId.setText("Identificador");
-
-        jLabelStockTotal.setText("Total");
-
-        jTextFieldStockId.setEnabled(false);
-
-        jButtonStockCreate.setText("Crear");
-
-        jButtonStockModify.setText("Modificar");
-
-        jButtonStockDelete.setText("Eliminar");
-
-        jButtonStockClear.setText("Limpiar");
-
-        javax.swing.GroupLayout jPanelStockButtonsLayout = new javax.swing.GroupLayout(jPanelStockButtons);
-        jPanelStockButtons.setLayout(jPanelStockButtonsLayout);
-        jPanelStockButtonsLayout.setHorizontalGroup(
-            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelStockButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonStockClear, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addGroup(jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonStockDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonStockModify, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                        .addComponent(jButtonStockCreate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanelStockButtonsLayout.setVerticalGroup(
-            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelStockButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonStockCreate)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonStockModify)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonStockDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jButtonStockClear)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanelStockLayout = new javax.swing.GroupLayout(jPanelStock);
-        jPanelStock.setLayout(jPanelStockLayout);
-        jPanelStockLayout.setHorizontalGroup(
-            jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelStockLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelStockLayout.createSequentialGroup()
-                        .addComponent(jScrollPanelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelStockButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelStockLayout.createSequentialGroup()
-                        .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelStockTotal)
-                            .addComponent(jLabelStockId))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelStockLayout.setVerticalGroup(
-            jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelStockLayout.createSequentialGroup()
-                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelStockButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPanelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelStockId)
-                    .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelStockTotal)
-                    .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
-        );
-
-        jTabbedPanelContent.addTab("Stock", jPanelStock);
-
-        jTableCategory.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPanelCategory.setViewportView(jTableCategory);
-
-        jLabelCategoryId.setText("Identificador");
-
-        jLabelCategoryName.setText("Nombre");
-
-        jLabelCategoryProducts.setText("Productos");
-
-        jTextFieldCategoryId.setEnabled(false);
-
-        jScrollPaneCategoryProducts.setViewportView(jListCategoryProducts);
-
-        jButtonCategoryCreate.setText("Crear");
-
-        jButtonCategoryModify.setText("Modificar");
-
-        jButtonCategoryDelete.setText("Eliminar");
-
-        jButtonCategoryClear.setText("Limpiar");
-
-        javax.swing.GroupLayout jPanelCategoryButtonsLayout = new javax.swing.GroupLayout(jPanelCategoryButtons);
-        jPanelCategoryButtons.setLayout(jPanelCategoryButtonsLayout);
-        jPanelCategoryButtonsLayout.setHorizontalGroup(
-            jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCategoryButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonCategoryModify, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButtonCategoryDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCategoryClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCategoryCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        jPanelCategoryButtonsLayout.setVerticalGroup(
-            jPanelCategoryButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCategoryButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonCategoryCreate)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCategoryModify)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonCategoryDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(jButtonCategoryClear)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanelCategoryLayout = new javax.swing.GroupLayout(jPanelCategory);
-        jPanelCategory.setLayout(jPanelCategoryLayout);
-        jPanelCategoryLayout.setHorizontalGroup(
-            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                        .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelCategoryName)
-                            .addComponent(jLabelCategoryId))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                                .addComponent(jTextFieldCategoryId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                                .addComponent(jLabelCategoryProducts)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneCategoryProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanelCategoryLayout.setVerticalGroup(
-            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelCategoryButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPanelCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCategoryLayout.createSequentialGroup()
-                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCategoryId)
-                            .addComponent(jTextFieldCategoryId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCategoryProducts))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCategoryName)
-                            .addComponent(jTextFieldCategoryName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPaneCategoryProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
-        );
-
-        jTabbedPanelContent.addTab("Categoria", jPanelCategory);
 
         jLabelTitle.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabelTitle.setText("VENTAS");

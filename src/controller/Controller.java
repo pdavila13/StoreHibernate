@@ -50,12 +50,10 @@ public final class Controller {
     private TableColumn loadTableCategory;
     private TableColumn loadTableClient;
     
-    private ArrayList<Product> category_product;
     private ArrayList<Client> client_product;
     
     private Stock stock;
     private Category category;
-    //private Client client;
     
     private int filasel = -1;
 
@@ -111,25 +109,23 @@ public final class Controller {
                         category = (Category) view.getjComboBoxProductCategory().getSelectedItem();
                         if (category != null) {
                             model.getProduct().set7_belongs(category);
-                        }
-                                                
-                        //model.getProduct().set6_stored(new ArrayList<>());
+                        }          
                         
                         //(List<Client>) (Client) view.getjComboBoxProductClient().getSelectedItem()
                         
+                        //ArrayList client_product = (ArrayList) view.getjComboBoxProductClient().getSelectedItem();
+                        //model.getProduct().set8_sold(client_product);
                         /*
-                        if (model.getProduct().get8_sold() == null) {
+                        if ((Client) view.getjComboBoxProductClient().getSelectedItem() == null) {
                             model.getProduct().set8_sold(new ArrayList<>());
                         } else {
                             model.getProduct().set8_sold(client_product);
                         }*/
                         
-                        
-                        client_product = (ArrayList<Client>) (List<Client>) view.getjComboBoxProductClient().getSelectedItem();
-                        if (client_product != null) {
-                            model.getProduct().set8_sold(client_product);
+                        if (model.getProduct().get8_sold() == null) {
+                            model.getProduct().set8_sold(new ArrayList<>());
                         } else {
-                           //model.getProduct().set8_sold(client_product);
+                            model.getProduct().set8_sold(client_product);
                         }
                         
                         model.getProductClassDAO().store(model.getProduct());
