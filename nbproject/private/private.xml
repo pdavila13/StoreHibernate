@@ -7,7 +7,8 @@
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/views/View.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/controller/Controller.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Product.java</file>
-            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Category.java</file>
+            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/model/Model.java</file>
+            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Client.java</file>
         </group>
     </open-files>
 </project-private>
