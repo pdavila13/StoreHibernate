@@ -33,7 +33,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import model.ClassDAO;
 import model.Model;
 import views.View;
 
@@ -41,7 +40,7 @@ import views.View;
  *
  * @author pdavila
  */
-public class Controller {
+public final class Controller {
     
     private Model model;
     private View view;
@@ -52,8 +51,11 @@ public class Controller {
     private TableColumn loadTableClient;
     
     private ArrayList<Product> category_product;
+    private ArrayList<Client> client_product;
+    
     private Stock stock;
     private Category category;
+    private Client client;
     
     private int filasel = -1;
 
@@ -64,18 +66,18 @@ public class Controller {
         loadTableProduct = loadTable((ArrayList) model.getProductClassDAO().obtainList(), view.getjTableProduct(), Product.class);
         loadTableStock = loadTable((ArrayList) model.getStockClassDAO().obtainList(), view.getjTableStock(), Stock.class);
         loadTableCategory = loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(), Category.class);
-        //loadTableClient = loadTable((ArrayList) modelClient.obtainList(), view.getjTableClient(), Client.class);
+        loadTableClient = loadTable((ArrayList) model.getClientClassDAO().obtainList(), view.getjTableClient(), Client.class);
         
         loadCombo((ArrayList) model.getStockClassDAO().obtainList(), view.getjComboBoxProductStock());
         loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
-        //loadCombo((ArrayList) modelClient.obtainList(), view.getjComboBoxProductClient());
+        loadCombo((ArrayList) model.getClientClassDAO().obtainList(), view.getjComboBoxProductClient());
         
         loadList((ArrayList) model.getProductClassDAO().obtainList(), view.getjListCategoryProducts());
         
         controlProduct();
         controlStock();
         controlCategory();
-        //controlClient();
+        controlClient();
         
         exitButton();
     }
@@ -115,9 +117,26 @@ public class Controller {
                         
                         //(List<Client>) (Client) view.getjComboBoxProductClient().getSelectedItem()
                         
+                        
+                        if (model.getProduct().get8_sold() == null) {
+                            model.getProduct().set8_sold(new ArrayList<>());
+                        } else {
+                            model.getProduct().set8_sold(client_product);
+                        }
+                        
+                        /*
+                        client_product = (ArrayList<Client>) view.getjComboBoxProductClient().getSelectedItem();
+                        if (client_product != null) {
+                            model.getProduct().set8_sold(new ArrayList<>());
+                        } else {
+                           model.getProduct().set8_sold(client_product);
+                        }*/
+                        
                         model.getProductClassDAO().store(model.getProduct());
+                        
                         loadTableProduct = loadTable((ArrayList) model.getProductClassDAO().obtainList(), view.getjTableProduct(), Product.class);
                         loadTableCategory = loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(), Category.class);
+                        loadTableClient = loadTable((ArrayList) model.getClientClassDAO().obtainList(), view.getjTableClient(), Client.class);
 
                         view.getjTableProduct().setRowSelectionInterval(view.getjTableProduct().getRowCount()-1, view.getjTableProduct().getRowCount()-1);
                     } catch(NumberFormatException ex) {
@@ -334,36 +353,31 @@ public class Controller {
     }
     
     private void controlCategory() {
-        view.getjButtonCategoryCreate().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource().equals(view.getjButtonCategoryCreate())) {
-                    if(!view.getjTextFieldCategoryId().getText().trim().equals("") ||
-                       !view.getjTextFieldCategoryName().getText().trim().equals(""))
+        view.getjButtonCategoryCreate().addActionListener((ActionEvent e) -> {
+            if(e.getSource().equals(view.getjButtonCategoryCreate())) {
+                if(!view.getjTextFieldCategoryId().getText().trim().equals("") ||
+                        !view.getjTextFieldCategoryName().getText().trim().equals(""))
                     model.getCategoryClassDAO().obtainList();
-
-                    Category c = new Category(
-                            view.getjTextFieldCategoryName().getText()
-                    );
-                    model.getCategoryClassDAO().store(c);
-                    
-                    
-
-                    loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(),Category.class);
-                    loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
-                } else {
-                    JOptionPane.showMessageDialog(null, "No has introducido ninguna categoria", "ERROR",JOptionPane.ERROR_MESSAGE);
-                }
                 
-                view.getjTextFieldCategoryName().setText("");
+                Category c = new Category(
+                        view.getjTextFieldCategoryName().getText()
+                );
+                model.getCategoryClassDAO().store(c);
+ 
+                loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(), Category.class);
+                loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
+            } else {
+                JOptionPane.showMessageDialog(null, "No has introducido ninguna categoria", "ERROR",JOptionPane.ERROR_MESSAGE);
             }
+            
+            view.getjTextFieldCategoryName().setText("");
         });
         
-        /*
         view.getjButtonCategoryModify().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tcm = (TableColumnModel) view.getjTableCategory().getColumnModel();
+                
                 if (view.getjTableCategory().getSelectedRow() != -1) {
                     view.getjTableCategory().addColumn(loadTableCategory);
                     
@@ -372,9 +386,10 @@ public class Controller {
                     modifyCategory.set2_category_name(view.getjTextFieldCategoryName().getText());
 
                     view.getjTableCategory().removeColumn(loadTableCategory);
-                    modelCategory.update(modifyCategory);
+                    model.getCategoryClassDAO().update(modifyCategory);
+                    
                     view.getjTableCategory().addColumn(loadTableCategory);
-                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                    loadTableCategory = loadTable((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjTableCategory(), Category.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un categoria para modificarla", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -392,10 +407,10 @@ public class Controller {
                     
                     Category deleteCategory = (Category) tm.getValueAt(view.getjTableCategory().getSelectedRow(), tm.getColumnCount() -1);
                     view.getjTableCategory().removeColumn(loadTableCategory);
-                    modelCategory.destroy(deleteCategory);
+                    model.getCategoryClassDAO().destroy(deleteCategory);
                     
                     view.getjTableCategory().addColumn(loadTableCategory);
-                    loadTableCategory = loadTable((ArrayList) modelCategory.obtainList(),view.getjTableCategory(),Category.class);
+                    loadTableCategory = loadTable((ArrayList) model.getCategoryClassDAO().obtainList(),view.getjTableCategory(),Category.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "Seleccciona una categoria para eliminarla", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -403,7 +418,6 @@ public class Controller {
                 view.getjTextFieldCategoryName().setText("");
             }
         });
-        */
         
         view.getjTableCategory().addMouseListener(new MouseAdapter() {
             @Override
@@ -431,7 +445,6 @@ public class Controller {
         clearTextFieldCategory();
     }
         
-    /*
     private void controlClient() {
         view.getjButtonClientCreate().addActionListener(new ActionListener() {
             @Override
@@ -443,19 +456,30 @@ public class Controller {
                            !view.getjTextFieldClientEmail().getText().trim().equals("") ||
                            !view.getjTextFieldClientAddress().getText().trim().equals("") ||
                            !view.getjTextFieldClientTelephoneNumber().getText().trim().equals("")) 
-                    modelClient.obtainList();
-
-                    Client c = new Client(
+                    model.getClientClassDAO().obtainList();
+                    
+                    Client cl = new Client(
+                        view.getjTextFieldClientOfficialId().getText(),
+                        view.getjTextFieldClientFullName().getText(),
+                        view.getjTextFieldClientEmail().getText(),
+                        view.getjTextFieldClientAddress().getText(),
+                        view.getjTextFieldClientTelephoneNumber().getText()
+                    );
+                    model.getClientClassDAO().store(cl);
+                    
+                    /*
+                    model.setClient(new Client(
                             view.getjTextFieldClientOfficialId().getText(),
                             view.getjTextFieldClientFullName().getText(),
                             view.getjTextFieldClientEmail().getText(),
                             view.getjTextFieldClientAddress().getText(),
                             view.getjTextFieldClientTelephoneNumber().getText()
-                    );
-                    modelClient.store(c);
+                    ));
+                    
+                    model.getClientClassDAO().store(model.getClient());*/
 
-                    loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(),Client.class);
-                    loadCombo((ArrayList) modelClient.obtainList(),view.getjComboBoxProductClient());
+                    loadTable((ArrayList) model.getClientClassDAO().obtainList(), view.getjTableClient(), Client.class);
+                    loadCombo((ArrayList) model.getClientClassDAO().obtainList(), view.getjComboBoxProductClient());
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ningun cliente", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -469,6 +493,7 @@ public class Controller {
             }
         });
         
+        /*
         view.getjButtonClientModify().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -526,6 +551,7 @@ public class Controller {
                 view.getjTextFieldClientTelephoneNumber().setText("");
             }
         });
+        */
         
         
         view.getjTableClient().addMouseListener(new MouseAdapter() {
@@ -534,6 +560,7 @@ public class Controller {
                 if (view.getjTableClient().getSelectedRow() != -1) {
                     super.mouseClicked(e);
                     DefaultTableModel model = (DefaultTableModel) view.getjTableClient().getModel();
+                    
                     view.getjTextFieldClientId().setText(model.getValueAt(Integer.valueOf(view.getjTableClient().getSelectedRow()), 0).toString());
                     view.getjTextFieldClientOfficialId().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 1).toString());
                     view.getjTextFieldClientFullName().setText(model.getValueAt(view.getjTableClient().getSelectedRow(), 2).toString());
@@ -548,7 +575,7 @@ public class Controller {
  
         clearTextFieldClient();
     }
-    */
+    
     
     public void clearTextFieldProduct() {
         view.getjButtonProductClear().addMouseListener(new MouseAdapter() {
@@ -598,10 +625,8 @@ public class Controller {
     }
     
     public void exitButton() {
-        view.getjButtonExit().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        view.getjButtonExit().addActionListener((ActionEvent e) -> {
+            System.exit(0);
         });
     }
     
