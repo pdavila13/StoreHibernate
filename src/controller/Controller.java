@@ -50,10 +50,9 @@ public final class Controller {
     private TableColumn loadTableCategory;
     private TableColumn loadTableClient;
     
-    private ArrayList<Client> client_product;
-    
     private Stock stock;
     private Category category;
+    private Client client;
     
     private int filasel = -1;
 
@@ -111,21 +110,9 @@ public final class Controller {
                             model.getProduct().set7_belongs(category);
                         }          
                         
-                        //(List<Client>) (Client) view.getjComboBoxProductClient().getSelectedItem()
-                        
-                        //ArrayList client_product = (ArrayList) view.getjComboBoxProductClient().getSelectedItem();
-                        //model.getProduct().set8_sold(client_product);
-                        /*
-                        if ((Client) view.getjComboBoxProductClient().getSelectedItem() == null) {
-                            model.getProduct().set8_sold(new ArrayList<>());
-                        } else {
-                            model.getProduct().set8_sold(client_product);
-                        }*/
-                        
-                        if (model.getProduct().get8_sold() == null) {
-                            model.getProduct().set8_sold(new ArrayList<>());
-                        } else {
-                            model.getProduct().set8_sold(client_product);
+                        client = (Client) view.getjComboBoxProductClient().getSelectedItem();
+                        if (client != null) {
+                            model.getProduct().set8_sold(client);
                         }
                         
                         model.getProductClassDAO().store(model.getProduct());
@@ -168,15 +155,19 @@ public final class Controller {
                         modifyProduct.set4_product_model(view.getjTextFieldProductModel().getText());
                         modifyProduct.set5_product_price(Double.valueOf(view.getjTextFieldProductPrice().getText()));
                         modifyProduct.set6_stored((Stock) view.getjComboBoxProductStock().getSelectedItem());
-                        //modifyProduct.set7_category((Category) view.getjComboBoxProductCategory().getSelectedItem());
-
+                        modifyProduct.set7_belongs((Category) view.getjComboBoxProductCategory().getSelectedItem());
+                        modifyProduct.set8_sold((Client) view.getjComboBoxProductClient().getSelectedItem());
+                        
                         view.getjTableProduct().removeColumn(loadTableProduct);
                         model.getProductClassDAO().update(modifyProduct);
                         
                         view.getjTableProduct().addColumn(loadTableProduct);
                         loadTableProduct = loadTable((ArrayList) model.getProductClassDAO().obtainList(), view.getjTableProduct(), Product.class);
+                        
                         loadCombo((ArrayList) model.getStockClassDAO().obtainList(), view.getjComboBoxProductStock());
-                        //loadCombo((ArrayList)modelCategory.obtainList(), view.getjComboBoxProductCategory());
+                        loadCombo((ArrayList) model.getCategoryClassDAO().obtainList(), view.getjComboBoxProductCategory());
+                        loadCombo((ArrayList) model.getClientClassDAO().obtainList(), view.getjComboBoxProductClient());
+
                     } catch(NumberFormatException ex) {
                         JOptionPane.showMessageDialog(view, "El precio tiene que ser entero","Error",JOptionPane.ERROR_MESSAGE);
                     } catch (NullPointerException ex) {
@@ -232,8 +223,9 @@ public final class Controller {
                     view.getjTextFieldProductTraceMark().setText(model.getValueAt(view.getjTableProduct().getSelectedRow(), 2).toString());
                     view.getjTextFieldProductModel().setText(model.getValueAt(view.getjTableProduct().getSelectedRow(), 3).toString());
                     view.getjTextFieldProductPrice().setText(model.getValueAt(Integer.valueOf(view.getjTableProduct().getSelectedRow()), 4).toString());
-                    //view.getjComboBoxProductStock().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 5).toString());
-                    //view.getjComboBoxProductCategory().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 6).toString());
+                    view.getjComboBoxProductStock().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 5).toString());
+                    view.getjComboBoxProductCategory().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 6).toString());
+                    view.getjComboBoxProductClient().setSelectedItem(model.getValueAt(view.getjTableProduct().getSelectedRow(), 7).toString());
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -462,17 +454,6 @@ public final class Controller {
                         view.getjTextFieldClientTelephoneNumber().getText()
                     );
                     model.getClientClassDAO().store(cl);
-                    
-                    /*
-                    model.setClient(new Client(
-                            view.getjTextFieldClientOfficialId().getText(),
-                            view.getjTextFieldClientFullName().getText(),
-                            view.getjTextFieldClientEmail().getText(),
-                            view.getjTextFieldClientAddress().getText(),
-                            view.getjTextFieldClientTelephoneNumber().getText()
-                    ));
-                    
-                    model.getClientClassDAO().store(model.getClient());*/
 
                     loadTable((ArrayList) model.getClientClassDAO().obtainList(), view.getjTableClient(), Client.class);
                     loadCombo((ArrayList) model.getClientClassDAO().obtainList(), view.getjComboBoxProductClient());
@@ -489,7 +470,6 @@ public final class Controller {
             }
         });
         
-        /*
         view.getjButtonClientModify().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -506,9 +486,10 @@ public final class Controller {
                     modifyClient.set6_client_telephoneNumber(view.getjTextFieldClientTelephoneNumber().getText());
                     
                     view.getjTableClient().removeColumn(loadTableClient);
-                    modelClient.update(modifyClient);
+                    model.getClientClassDAO().update(modifyClient);
+                    
                     view.getjTableClient().addColumn(loadTableClient);
-                    loadTableClient = loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(), Client.class);
+                    loadTableClient = loadTable((ArrayList) model.getClientClassDAO().obtainList(),view.getjTableClient(), Client.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un cliente para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -531,10 +512,10 @@ public final class Controller {
                     
                     Client deleteClient = (Client) tm.getValueAt(view.getjTableClient().getSelectedRow(), tm.getColumnCount() -1);
                     view.getjTableClient().removeColumn(loadTableClient);
-                    modelClient.destroy(deleteClient);
+                    model.getClientClassDAO().destroy(deleteClient);
                     
                     view.getjTableClient().addColumn(loadTableClient);
-                    loadTableClient = loadTable((ArrayList) modelClient.obtainList(),view.getjTableClient(),Client.class);
+                    loadTableClient = loadTable((ArrayList) model.getClientClassDAO().obtainList(), view.getjTableClient() ,Client.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "Seleccciona un cliente para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -547,8 +528,6 @@ public final class Controller {
                 view.getjTextFieldClientTelephoneNumber().setText("");
             }
         });
-        */
-        
         
         view.getjTableClient().addMouseListener(new MouseAdapter() {
             @Override

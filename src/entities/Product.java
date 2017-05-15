@@ -130,6 +130,9 @@ public class Product {
         this._8_sold = _8_sold;
     }
     
+    public void set8_sold(Client _8_sold) {
+        this._8_sold.add(_8_sold);
+    }
     @Override
     public String toString() {
         return _2_product_name;

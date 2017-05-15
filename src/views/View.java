@@ -660,15 +660,14 @@ public class View extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new View().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new View().setVisible(true);
         });
     }
     
     /**
      * General
+     * @return 
      */
     public JLabel getjLabelTitle() { return jLabelTitle; }
     public JTabbedPane getjTabbedPanelContent() { return jTabbedPanelContent; }
@@ -677,6 +676,7 @@ public class View extends javax.swing.JFrame {
     
     /**
      * Products
+     * @return 
      */
     public JButton getjButtonProductCreate() { return jButtonProductCreate; }
     public JButton getjButtonProductModify() { return jButtonProductModify; }
@@ -711,6 +711,7 @@ public class View extends javax.swing.JFrame {
     
     /**
      * Stock
+     * @return 
      */
     public JButton getjButtonStockCreate() { return jButtonStockCreate; }
     public JButton getjButtonStockModify() { return jButtonStockModify; }
@@ -733,6 +734,7 @@ public class View extends javax.swing.JFrame {
     
     /**
      * Category
+     * @return 
      */
     public JButton getjButtonCategoryCreate() { return jButtonCategoryCreate; }
     public JButton getjButtonCategoryModify() { return jButtonCategoryModify; }
@@ -744,6 +746,8 @@ public class View extends javax.swing.JFrame {
 
     public JPanel getjPanelCategory() { return jPanelCategory; }
     public JPanel getjPanelCategoryButtons() { return jPanelCategoryButtons; }
+    
+    public JList<String> getjListCategoryProducts() { return jListCategoryProducts; }
 
     public JScrollPane getjScrollPanelCategory() { return jScrollPanelCategory; }
 
@@ -755,6 +759,7 @@ public class View extends javax.swing.JFrame {
     
     /**
      * Client
+     * @return 
      */    
     public JButton getjButtonClientCreate() { return jButtonClientCreate; }
     public JButton getjButtonClientModify() { return jButtonClientModify; }
@@ -858,25 +863,5 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldStockId;
     private javax.swing.JTextField jTextFieldStockTotal;
     // End of variables declaration//GEN-END:variables
-
-    public Category getGetjComboBoxProductCategory() {
-        return getjComboBoxProductCategory;
-    }
-
-    public javax.swing.JLabel getjLabelCategoryProducts() {
-        return jLabelCategoryProducts;
-    }
-
-    public javax.swing.JLabel getjLabelProductClient() {
-        return jLabelProductClient;
-    }
-
-    public javax.swing.JList<String> getjListCategoryProducts() {
-        return jListCategoryProducts;
-    }
-
-    public javax.swing.JScrollPane getjScrollPaneCategoryProducts() {
-        return jScrollPaneCategoryProducts;
-    }
 
 }
